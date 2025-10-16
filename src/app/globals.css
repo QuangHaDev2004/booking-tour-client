@@ -31,3 +31,16 @@ button,
 textarea {
   outline: none;
 }
+
+.icon-cart::before {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-top: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+  border-right: 3.7px solid #ff3904;
+  position: absolute;
+  left: -3.2px;
+  top: 5.5px;
+}
