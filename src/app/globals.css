@@ -12,6 +12,7 @@
   --color-secondary: #25282b;
   --color-yellow: #ffd600;
   --color-red: #da0808;
+  --color-gray: #a6a6a6;
 }
 
 * {
@@ -43,4 +44,26 @@ textarea {
   position: absolute;
   left: -3.2px;
   top: 5.5px;
+}
+
+.react-datepicker__day-name:last-child,
+.react-datepicker__day:last-child {
+  color: var(--color-red-500);
+  font-weight: 700;
+}
+
+.react-datepicker__day--selected {
+  color: #fff !important;
+}
+
+.react-datepicker__day--disabled {
+  color: #ccc !important;
+}
+
+.react-datepicker__navigation-icon::before {
+  top: 8px !important;
+}
+
+.react-datepicker__current-month {
+  font-size: 14px !important;
 }
