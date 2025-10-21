@@ -24,7 +24,7 @@ export const CustomDatePicker = () => {
         dateFormat="EEE, dd 'thg' MM, yyyy" // ví dụ: Th 4, 22 thg 10, 2025
         minDate={today}
         onChangeRaw={(e) => e?.preventDefault()}
-        className="text-gray h-full text-sm font-normal caret-transparent"
+        className="text-secondary h-full text-sm font-normal caret-transparent"
       />
     </div>
   );
