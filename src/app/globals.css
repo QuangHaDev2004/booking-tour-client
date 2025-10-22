@@ -67,3 +67,17 @@ textarea {
 .react-datepicker__current-month {
   font-size: 14px !important;
 }
+
+.swiperSection3 .swiper-wrapper {
+  padding-bottom: 48px;
+}
+
+.swiperSection3 .swiper-pagination-bullet {
+  width: 15px;
+  height: 15px;
+  background-color: var(--color-gray);
+}
+
+.swiperSection3 .swiper-pagination-bullet-active {
+  background-color: var(--color-primary);
+}
