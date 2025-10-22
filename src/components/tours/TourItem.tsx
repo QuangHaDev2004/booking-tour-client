@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 
+"use client";
 import Link from "next/link";
 import { FaBolt, FaRegStar, FaStar } from "react-icons/fa6";
 
@@ -7,7 +8,7 @@ export const TourItem = () => {
   return (
     <div
       style={{ boxShadow: "0px 2.38px 2.38px 0px #00000040" }}
-      className="overflow-hidden rounded-[10px] bg-white"
+      className="hover:shadow-gray overflow-hidden rounded-[10px] bg-white transition-all duration-300 hover:!shadow-2xl"
     >
       <div className="-mb-3 aspect-[271/237] overflow-hidden rounded-[10px]">
         <Link href={""}>
@@ -22,13 +23,13 @@ export const TourItem = () => {
         <FaBolt className="text-yellow text-sm" />
         Giảm -30%
       </div>
-      <div className="px-4 pt-2 pb-4">
+      <div className="p-2.5 sm:px-4 sm:pb-4">
         <h2 className="text-secondary hover:text-primary mb-1 line-clamp-2 text-sm font-bold transition-all duration-300">
           <Link href={""}>
             Tour 2024 Phú Quốc – Thiên Đường Đảo Ngọc (3N2D)
           </Link>
         </h2>
-        <div className="mb-2.5 flex flex-wrap items-center gap-[10px]">
+        <div className="mb-2.5 flex flex-wrap items-center gap-[5px] sm:gap-3">
           <div className="text-[15px] font-semibold text-[#52575C] line-through">
             13.650.000
             <span className="underline">đ</span>
@@ -38,7 +39,7 @@ export const TourItem = () => {
             <span className="underline">đ</span>
           </div>
         </div>
-        <div className="mb-2 flex flex-col gap-1 text-[11px] font-normal text-[#8C8C8C]">
+        <div className="mb-2.5 flex flex-col gap-1 text-[10px] font-normal text-[#8C8C8C] sm:text-[11px]">
           <div className="">
             Mã Tour: <b>123456789</b>
           </div>
@@ -49,7 +50,7 @@ export const TourItem = () => {
             Thời Gian: <b>10 Ngày 9 Đêm</b>
           </div>
         </div>
-        <div className="flex flex-wrap items-center justify-between gap-6">
+        <div className="flex flex-wrap items-center justify-between gap-2.5 sm:gap-6">
           <div className="flex items-center gap-[2px]">
             <FaStar className="text-yellow text-sm" />
             <FaStar className="text-yellow text-sm" />

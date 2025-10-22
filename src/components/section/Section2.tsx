@@ -1,10 +1,12 @@
 "use client";
-
+import dynamic from "next/dynamic";
 import { ClockCountdown } from "../countdown/ClockCountdown";
-import { TourItem } from "../tours/TourItem";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
-import "swiper/css";
+import { Spinner } from "../loading/Spinner";
+
+const TourFeature = dynamic(() => import("@/components/tours/TourFeature"), {
+  ssr: false,
+  loading: () => <Spinner />,
+});
 
 export default function Section2() {
   return (
@@ -33,31 +35,7 @@ export default function Section2() {
           </div>
 
           {/* Features Tour */}
-          <div className="w-full md:w-1/2 lg:w-[68%] xl:w-3/4">
-            <Swiper
-              slidesPerView={1}
-              spaceBetween={20}
-              modules={[Autoplay]}
-              autoplay={{ delay: 3000, disableOnInteraction: false }}
-              breakpoints={{
-                992: { slidesPerView: 2 },
-                1200: { slidesPerView: 3 },
-              }}
-            >
-              <SwiperSlide>
-                <TourItem />
-              </SwiperSlide>
-              <SwiperSlide>
-                <TourItem />
-              </SwiperSlide>
-              <SwiperSlide>
-                <TourItem />
-              </SwiperSlide>
-              <SwiperSlide>
-                <TourItem />
-              </SwiperSlide>
-            </Swiper>
-          </div>
+          <TourFeature />
         </div>
       </div>
     </div>
