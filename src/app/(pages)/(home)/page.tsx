@@ -5,6 +5,7 @@ import Section2 from "@/components/section/Section2";
 import { Section3 } from "@/components/section/Section3";
 import { Title } from "@/components/title/Title";
 import { TourItem } from "@/components/tours/TourItem";
+import { Section8 } from "@/components/section/Section8";
 
 export default function Home() {
   return (
@@ -94,6 +95,8 @@ export default function Home() {
         </div>
       </div>
 
+      {/* Section 8 */}
+      <Section8 />
     </>
   );
 }
