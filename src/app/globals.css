@@ -46,6 +46,7 @@ textarea {
   top: 5.5px;
 }
 
+/* Datepicker */
 .react-datepicker__day-name:last-child,
 .react-datepicker__day:last-child {
   color: var(--color-red-500);
@@ -68,6 +69,7 @@ textarea {
   font-size: 14px !important;
 }
 
+/* Swiper */
 .swiperSection3 .swiper-wrapper {
   padding-bottom: 48px;
 }
@@ -80,4 +82,17 @@ textarea {
 
 .swiperSection3 .swiper-pagination-bullet-active {
   background-color: var(--color-primary);
+}
+
+/* Scroll */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #9DB2BF;
+}
+
+::-webkit-scrollbar-track {
+  background: #DDE6ED;
 }
