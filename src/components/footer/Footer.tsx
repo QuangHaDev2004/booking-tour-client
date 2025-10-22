@@ -73,7 +73,7 @@ export const Footer = () => {
               </ul>
             </nav>
             <nav>
-              <ul className="text-secondary flex items-center gap-[25px] sm:gap-10">
+              <ul className="flex items-center gap-[25px] sm:gap-10">
                 <li>
                   <Link href={""} target="_blank">
                     <FaFacebook className="text-2xl text-[#1877F2]" />

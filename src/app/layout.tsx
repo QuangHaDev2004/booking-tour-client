@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Header } from "@/components/header/Header";
 import { Footer } from "@/components/footer/Footer";
+import { BoxContact } from "@/components/box-contact/BoxContact";
 
 export const metadata: Metadata = {
   title: "HW Tour - Đặt Tour du lịch tiện lợi và nhanh chóng",
@@ -17,10 +18,9 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body>
         <Header />
-
         {children}
-
         <Footer />
+        <BoxContact />
       </body>
     </html>
   );
