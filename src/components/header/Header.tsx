@@ -1,4 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
+
+"use client";
 import Link from "next/link";
 import {
   FaBars,
@@ -32,6 +34,7 @@ export const Header = () => {
           </div>
         </div>
       </div>
+
       {/* Header */}
       <header className="sticky top-0 right-0 left-0 z-[997] bg-white py-3 shadow-md">
         <div className="container">
