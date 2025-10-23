@@ -19,6 +19,10 @@
   font-family: "Lexend", sans-serif;
 }
 
+html, body {
+  scroll-behavior: smooth !important;
+}
+
 .container {
   margin-left: auto;
   margin-right: auto;
@@ -90,9 +94,9 @@ textarea {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #9DB2BF;
+  background: #9db2bf;
 }
 
 ::-webkit-scrollbar-track {
-  background: #DDE6ED;
+  background: #dde6ed;
 }
