@@ -11,7 +11,7 @@ export const BoxContact = () => {
     <nav className="fixed right-5 bottom-24">
       <ul
         style={{ boxShadow: "0px 2px 4px 0px #00000026" }}
-        className="bg-primary flex flex-col items-center gap-5 rounded-[10px] p-3 text-white"
+        className="bg-travel-primary flex flex-col items-center gap-5 rounded-[10px] p-3 text-white"
       >
         <li>
           <Link href={""} target="_blank">

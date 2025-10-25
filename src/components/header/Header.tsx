@@ -14,7 +14,7 @@ export const Header = () => {
   return (
     <>
       {/* Top Header */}
-      <div className="bg-primary hidden py-3 text-[#FFFBEB] md:block">
+      <div className="bg-travel-primary hidden py-3 text-[#FFFBEB] md:block">
         <div className="container">
           <div className="flex items-center justify-end gap-10">
             <div className="flex items-center gap-2">
@@ -36,12 +36,12 @@ export const Header = () => {
       </div>
 
       {/* Header */}
-      <header className="sticky top-0 right-0 left-0 z-[997] bg-white py-3 shadow-md">
+      <header className="sticky top-0 right-0 left-0 z-[900] bg-white py-3 shadow-md">
         <div className="container">
           <div className="flex items-center justify-between">
             {/* Button Mobile */}
             <button className="block cursor-pointer lg:hidden">
-              <FaBars className="text-secondary text-2xl" />
+              <FaBars className="text-travel-secondary text-2xl" />
             </button>
 
             {/* Logo */}
@@ -59,7 +59,7 @@ export const Header = () => {
                 <li>
                   <Link
                     href=""
-                    className="text-secondary text-[16px] font-medium capitalize"
+                    className="text-travel-secondary text-[16px] font-medium capitalize"
                   >
                     Trang Chủ
                   </Link>
@@ -67,7 +67,7 @@ export const Header = () => {
                 <li className="group/sub-1 relative flex items-center gap-1.5">
                   <Link
                     href=""
-                    className="text-secondary text-[16px] font-medium capitalize"
+                    className="text-travel-secondary text-[16px] font-medium capitalize"
                   >
                     Tour Trong Nước
                   </Link>
@@ -76,7 +76,7 @@ export const Header = () => {
                     <li>
                       <Link
                         href={""}
-                        className="text-primary hover:bg-primary block px-[22px] py-2 text-[16px] font-normal capitalize transition-all duration-300 hover:text-white"
+                        className="text-travel-primary hover:bg-travel-primary block px-[22px] py-2 text-[16px] font-normal capitalize transition-all duration-300 hover:text-white"
                       >
                         Tour Miền Bắc
                       </Link>
@@ -84,7 +84,7 @@ export const Header = () => {
                     <li>
                       <Link
                         href={""}
-                        className="text-primary hover:bg-primary block px-[22px] py-2 text-[16px] font-normal capitalize transition-all duration-300 hover:text-white"
+                        className="text-travel-primary hover:bg-travel-primary block px-[22px] py-2 text-[16px] font-normal capitalize transition-all duration-300 hover:text-white"
                       >
                         Tour Miền Trung
                       </Link>
@@ -93,7 +93,7 @@ export const Header = () => {
                     <li>
                       <Link
                         href={""}
-                        className="text-primary hover:bg-primary block px-[22px] py-2 text-[16px] font-normal capitalize transition-all duration-300 hover:text-white"
+                        className="text-travel-primary hover:bg-travel-primary block px-[22px] py-2 text-[16px] font-normal capitalize transition-all duration-300 hover:text-white"
                       >
                         Tour Miền Nam
                       </Link>
@@ -101,7 +101,7 @@ export const Header = () => {
                     <li>
                       <Link
                         href={""}
-                        className="text-primary hover:bg-primary block px-[22px] py-2 text-[16px] font-normal capitalize transition-all duration-300 hover:text-white"
+                        className="text-travel-primary hover:bg-travel-primary block px-[22px] py-2 text-[16px] font-normal capitalize transition-all duration-300 hover:text-white"
                       >
                         Tour Xuyên Việt
                       </Link>
@@ -111,7 +111,7 @@ export const Header = () => {
                 <li className="flex items-center gap-1.5">
                   <Link
                     href=""
-                    className="text-secondary text-[16px] font-medium capitalize"
+                    className="text-travel-secondary text-[16px] font-medium capitalize"
                   >
                     Tour Nước Ngoài
                   </Link>
@@ -120,7 +120,7 @@ export const Header = () => {
                 <li>
                   <Link
                     href=""
-                    className="text-secondary text-[16px] font-medium capitalize"
+                    className="text-travel-secondary text-[16px] font-medium capitalize"
                   >
                     Tin Tức
                   </Link>
@@ -128,7 +128,7 @@ export const Header = () => {
                 <li>
                   <Link
                     href=""
-                    className="text-secondary text-[16px] font-medium capitalize"
+                    className="text-travel-secondary text-[16px] font-medium capitalize"
                   >
                     Liên Hệ
                   </Link>

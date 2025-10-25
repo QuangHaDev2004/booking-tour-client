@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import { CustomDatePicker } from "@/components/date/CustomDatePicker";
 import { FaChevronDown, FaMagnifyingGlass } from "react-icons/fa6";
 
 export const FormSearch = () => {
@@ -45,8 +44,11 @@ export const FormSearch = () => {
           alt="Thời gian"
           className="h-5 w-auto"
         />
-        <CustomDatePicker />
-        <FaChevronDown className="text-primary text-xs" />
+        <input
+          type="date"
+          placeholder="Ngày khởi hành"
+          className="placeholder:text-gray h-full flex-1 text-sm font-normal"
+        />
       </div>
 
       <button
