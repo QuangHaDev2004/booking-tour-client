@@ -8,7 +8,7 @@ export const TourItem = () => {
   return (
     <div
       style={{ boxShadow: "0px 2.38px 2.38px 0px #00000040" }}
-      className="hover:shadow-gray overflow-hidden rounded-[10px] bg-white transition-all duration-300 hover:!shadow-2xl"
+      className="hover:shadow-travel-gray overflow-hidden rounded-[10px] bg-white transition-all duration-300 hover:!shadow-2xl"
     >
       <div className="-mb-3 aspect-[271/237] overflow-hidden rounded-[10px]">
         <Link href={""}>
@@ -19,12 +19,12 @@ export const TourItem = () => {
           />
         </Link>
       </div>
-      <div className="bg-red -mt-5 inline-flex items-center gap-1.5 rounded-tr-4xl rounded-br-4xl pt-1 pr-3 pb-[2px] pl-[5px] text-xs font-semibold text-[#F9F9FA] uppercase">
-        <FaBolt className="text-yellow text-sm" />
+      <div className="bg-travel-red -mt-5 inline-flex items-center gap-1.5 rounded-tr-4xl rounded-br-4xl pt-1 pr-3 pb-[2px] pl-[5px] text-xs font-semibold text-[#F9F9FA] uppercase">
+        <FaBolt className="text-travel-yellow text-sm" />
         Giảm -30%
       </div>
       <div className="p-2.5 sm:px-4 sm:pb-4">
-        <h2 className="text-secondary hover:text-primary mb-1 line-clamp-2 text-sm font-bold transition-all duration-300">
+        <h2 className="text-travel-secondary hover:text-travel-primary mb-1 line-clamp-2 text-sm font-bold transition-all duration-300">
           <Link href={""}>
             Tour 2024 Phú Quốc – Thiên Đường Đảo Ngọc (3N2D)
           </Link>
@@ -34,7 +34,7 @@ export const TourItem = () => {
             13.650.000
             <span className="underline">đ</span>
           </div>
-          <div className="text-red text-sm font-bold">
+          <div className="text-travel-red text-sm font-bold">
             2.590.000
             <span className="underline">đ</span>
           </div>
@@ -52,20 +52,20 @@ export const TourItem = () => {
         </div>
         <div className="flex flex-wrap items-center justify-between gap-2.5 sm:gap-6">
           <div className="flex items-center gap-[2px]">
-            <FaStar className="text-yellow text-sm" />
-            <FaStar className="text-yellow text-sm" />
-            <FaStar className="text-yellow text-sm" />
-            <FaStar className="text-yellow text-sm" />
-            <FaRegStar className="text-yellow text-sm" />
+            <FaStar className="text-travel-yellow text-sm" />
+            <FaStar className="text-travel-yellow text-sm" />
+            <FaStar className="text-travel-yellow text-sm" />
+            <FaStar className="text-travel-yellow text-sm" />
+            <FaRegStar className="text-travel-yellow text-sm" />
             <span className="-mb-[2px] ml-[2px] text-xs text-[#8C8C8C]">
               (5)
             </span>
           </div>
           <div className="flex items-center gap-[10px]">
-            <span className="text-secondary text-[10px] font-bold">
+            <span className="text-travel-secondary text-[10px] font-bold">
               Số chỗ còn:
             </span>
-            <span className="bg-red inline-flex h-8 w-8 items-center justify-center rounded-md text-sm font-bold text-white">
+            <span className="bg-travel-red inline-flex h-8 w-8 items-center justify-center rounded-md text-sm font-bold text-white">
               10
             </span>
           </div>
