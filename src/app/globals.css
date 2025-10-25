@@ -63,11 +63,11 @@ textarea {
 .swiperSection3 .swiper-pagination-bullet {
   width: 15px;
   height: 15px;
-  background-color: var(--color-gray);
+  background-color: var(--color-travel-gray);
 }
 
 .swiperSection3 .swiper-pagination-bullet-active {
-  background-color: var(--color-primary);
+  background-color: var(--color-travel-primary);
 }
 
 /* Input Number */

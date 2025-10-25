@@ -14,7 +14,7 @@ export default function Section2() {
       <div className="container">
         <div
           style={{ boxShadow: "0px 4px 4px 0px #00000040" }}
-          className="bg-primary flex flex-wrap gap-8 rounded-[10px] px-[15px] py-[30px] sm:p-8"
+          className="bg-travel-primary flex flex-wrap gap-8 rounded-[10px] px-[15px] py-[30px] sm:p-8"
         >
           {/* Info */}
           <div className="w-full text-center text-white md:w-[calc(50%-32px)] lg:w-[calc(32%-32px)] xl:w-[calc(25%-32px)]">
@@ -28,7 +28,7 @@ export default function Section2() {
             <div className="mb-4 text-[20px] font-bold">Kết thúc sau</div>
             <ClockCountdown expireDate="2025-12-01T00:00:00" />
             <div className="text-[16px] font-bold uppercase">GIẢM ĐẾN</div>
-            <div className="text-yellow text-[40px] font-bold">
+            <div className="text-travel-yellow text-[40px] font-bold">
               <span>990.000</span>
               <span className="underline">đ</span>
             </div>
