@@ -17,9 +17,9 @@ export const FormSearch = () => {
         <input
           type="text"
           placeholder="Bạn muốn đi đâu?"
-          className="placeholder:text-gray h-full flex-1 text-sm font-normal"
+          className="placeholder:text-travel-gray h-full flex-1 text-sm font-normal"
         />
-        <FaChevronDown className="text-primary text-xs" />
+        <FaChevronDown className="text-travel-primary text-xs" />
       </div>
 
       {/* Số lượng */}
@@ -32,9 +32,9 @@ export const FormSearch = () => {
         <input
           type="text"
           placeholder="Số lượng"
-          className="placeholder:text-gray h-full flex-1 text-sm font-normal"
+          className="placeholder:text-travel-gray h-full flex-1 text-sm font-normal"
         />
-        <FaChevronDown className="text-primary text-xs" />
+        <FaChevronDown className="text-travel-primary text-xs" />
       </div>
 
       {/* Thời gian */}
@@ -47,14 +47,14 @@ export const FormSearch = () => {
         <input
           type="date"
           placeholder="Ngày khởi hành"
-          className="placeholder:text-gray h-full flex-1 text-sm font-normal"
+          className="placeholder:text-travel-gray h-full flex-1 text-sm font-normal"
         />
       </div>
 
       <button
         type="submit"
         style={{ boxShadow: "0px 3.3px 3.3px 0px #00000040" }}
-        className="bg-primary flex flex-1 cursor-pointer items-center justify-center gap-[10px] rounded-[10px] px-4 py-[19px] text-white transition-all duration-300 hover:brightness-95"
+        className="bg-travel-primary flex flex-1 cursor-pointer items-center justify-center gap-[10px] rounded-[10px] px-4 py-[19px] text-white transition-all duration-300 hover:brightness-95"
       >
         <FaMagnifyingGlass className="text-xl" />
         <span className="text-[13px] font-semibold">Tìm Kiếm</span>

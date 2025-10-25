@@ -45,7 +45,7 @@ export const Section8 = () => {
               </div>
               <div className="flex flex-col gap-2.5 p-2.5 sm:px-6 sm:py-4">
                 <div className="text-xs font-light sm:text-sm">23/05/2024</div>
-                <div className="text-primary line-clamp-1 text-lg font-normal sm:text-[22px]">
+                <div className="text-travel-primary line-clamp-1 text-lg font-normal sm:text-[22px]">
                   Top 5 điểm check in độc đáo tại Singapore
                 </div>
                 <div className="line-clamp-2 text-justify text-sm font-light">
