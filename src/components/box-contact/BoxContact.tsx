@@ -1,39 +1,39 @@
+/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
-import {
-  FaFacebookF,
-  FaInstagram,
-  FaTwitter,
-  FaYoutube,
-} from "react-icons/fa6";
+import { FaPhoneVolume } from "react-icons/fa6";
 
 export const BoxContact = () => {
   return (
-    <nav className="fixed right-5 bottom-24">
-      <ul
-        style={{ boxShadow: "0px 2px 4px 0px #00000026" }}
-        className="bg-travel-primary flex flex-col items-center gap-5 rounded-[10px] p-3 text-white"
+    <div className="fab fixed right-4 bottom-24">
+      <div
+        tabIndex={0}
+        role="button"
+        className="btn btn-lg btn-circle bg-travel-primary relative border-none text-white"
       >
-        <li>
-          <Link href={""} target="_blank">
-            <FaFacebookF className="text-lg" />
-          </Link>
-        </li>
-        <li>
-          <Link href={""} target="_blank">
-            <FaInstagram className="text-lg" />
-          </Link>
-        </li>
-        <li>
-          <Link href={""} target="_blank">
-            <FaTwitter className="text-lg" />
-          </Link>
-        </li>
-        <li>
-          <Link href={""} target="_blank">
-            <FaYoutube className="text-lg" />
-          </Link>
-        </li>
-      </ul>
-    </nav>
+        <FaPhoneVolume />
+        <div className="absolute bottom-0 left-0 h-4 w-4 rounded-full border-2 border-white bg-green-400"></div>
+      </div>
+
+      <div className="fab-close">
+        <span className="btn btn-circle btn-lg bg-travel-red border-none text-white">
+          ✕
+        </span>
+      </div>
+
+      <Link
+        href={"/"}
+        target="_blank"
+        className="btn btn-lg btn-circle border-none"
+      >
+        <img src="/assets/images/facebook.png" alt="Facebook" />
+      </Link>
+      <Link
+        href={"/"}
+        target="_blank"
+        className="btn btn-lg btn-circle border-none"
+      >
+        <img src="/assets/images/zalo.png" alt="Zalo" />
+      </Link>
+    </div>
   );
 };

@@ -1,31 +1,16 @@
 /* eslint-disable @next/next/no-img-element */
 import { ButtonViewAll } from "@/components/button/ButtonViewAll";
-import { FormSearch } from "./FormSearch";
 import Section2 from "@/components/section/Section2";
 import { Section3 } from "@/components/section/Section3";
 import { Title } from "@/components/title/Title";
 import { TourItem } from "@/components/tours/TourItem";
 import { Section8 } from "@/components/section/Section8";
+import { HomeBanner } from "@/components/home/HomeBanner";
 
-export default function Home() {
+export default function HomePage() {
   return (
     <>
-      {/* Section 1 */}
-      <div className="bg-[url(/assets/images/bg-section-1.jpg)] bg-cover bg-center bg-no-repeat py-[107px]">
-        <div className="container">
-          <div className="mx-auto w-full lg:w-[768px]">
-            <h1 className="text-travel-primary mb-5 text-center text-[28px] font-bold md:text-[32px] lg:text-4xl">
-              Du lịch Châu Á - Khám phá Mỹ, Úc, Âu Đi nơi đâu bạn muốn
-            </h1>
-            <p className="text-travel-secondary mb-[30px] text-center text-sm font-normal lg:text-[16px]">
-              Trải nghiệm hành trình đáng nhớ cùng chúng tôi – khám phá văn hoá,
-              ẩm thực và cảnh đẹp khắp năm châu, mang đến kỳ nghỉ trọn vẹn cho
-              bạn và gia đình.
-            </p>
-            <FormSearch />
-          </div>
-        </div>
-      </div>
+      <HomeBanner />
 
       {/* Section 2 */}
       <Section2 />
