@@ -60,7 +60,7 @@ textarea {
 .swiperSection3 .swiper-pagination-bullet {
   width: 15px;
   height: 15px;
-  background-color: var(--color-travel-gray);
+  background-color: var(--color-travel-gray-100);
 }
 
 .swiperSection3 .swiper-pagination-bullet-active {

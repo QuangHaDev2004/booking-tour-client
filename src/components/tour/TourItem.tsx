@@ -10,18 +10,18 @@ export const TourItem = () => {
   return (
     <div
       style={{ boxShadow: "0px 2.38px 2.38px 0px #00000040" }}
-      className="overflow-hidden rounded-md bg-white group/item"
+      className="group/item overflow-hidden rounded-md bg-white"
     >
       <div className="-mb-3 aspect-[271/237] overflow-hidden rounded-md">
         <Link href={""}>
           <img
             src="https://saigontourist.net/media/private/PIgm7G/hu4iWV/2d537728.jpg.thumb/880x660.jpg"
             alt=""
-            className="h-full w-full object-cover group-hover/item:scale-105 transition-all duration-500"
+            className="h-full w-full object-cover transition-all duration-500 group-hover/item:scale-105"
           />
         </Link>
       </div>
-      <div className="bg-travel-red -mt-5 inline-flex items-center gap-1.5 rounded-tr-4xl rounded-br-4xl pt-1 pr-3 pb-[2px] pl-[5px] text-xs font-semibold text-white relative uppercase">
+      <div className="bg-travel-red relative -mt-5 inline-flex items-center gap-1.5 rounded-tr-4xl rounded-br-4xl pt-1 pr-3 pb-[2px] pl-[5px] text-xs font-semibold text-white uppercase">
         <FaBolt className="text-travel-yellow text-sm" />
         Giảm -30%
       </div>
@@ -31,7 +31,7 @@ export const TourItem = () => {
             Tour 2024 Phú Quốc – Thiên Đường Đảo Ngọc (3N2D)
           </Link>
         </h2>
-        <div className="text-travel-secondary/80 mb-2.5 flex flex-col gap-2 text-[10px] font-medium sm:text-xs">
+        <div className="text-travel-secondary/80 mb-2.5 flex flex-col gap-2 text-xs font-medium">
           <div className="flex items-center gap-2">
             <GrMapLocation size={16} />
             <span>

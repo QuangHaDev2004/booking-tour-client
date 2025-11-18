@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { ButtonViewAll } from "@/components/button/ButtonViewAll";
-import { Section3 } from "@/components/section/Section3";
+import { HomeDealsCarousel } from "@/components/home/HomeDealsCarousel";
 import { Title } from "@/components/title/Title";
 import { TourItem } from "@/components/tour/TourItem";
 import { Section8 } from "@/components/section/Section8";
@@ -12,9 +12,7 @@ export default function HomePage() {
     <>
       <HomeBanner />
       <HomeLastMinuteDeals />
-
-      {/* Section 3 */}
-      <Section3 />
+      <HomeDealsCarousel />
 
       {/* Section 4 */}
       <div className="pb-[45px] sm:pb-[60px]">

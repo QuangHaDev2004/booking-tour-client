@@ -1,13 +1,9 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useClientReady } from "@/hooks/useClientReady";
 import Countdown from "react-countdown";
 
 export const ClockCountdown = ({ expireDate }: { expireDate: string }) => {
-  const [isReady, setIsReady] = useState(false);
-
-  useEffect(() => {
-    setIsReady(true);
-  }, []);
+  const { isReady } = useClientReady();
 
   if (!isReady)
     return (

@@ -1,16 +1,12 @@
 "use client";
 import { TourItem } from "../tour/TourItem";
+import { useClientReady } from "@/hooks/useClientReady";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
-import { useEffect, useState } from "react";
 
 export const LastMinuteDealFeatures = () => {
-  const [isReady, setIsReady] = useState(false);
-
-  useEffect(() => {
-    setIsReady(true);
-  }, []);
+  const { isReady } = useClientReady();
 
   if (!isReady) return <div className="h-[435px]"></div>;
 
