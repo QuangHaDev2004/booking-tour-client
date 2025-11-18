@@ -1,19 +1,17 @@
 /* eslint-disable @next/next/no-img-element */
 import { ButtonViewAll } from "@/components/button/ButtonViewAll";
-import Section2 from "@/components/section/Section2";
 import { Section3 } from "@/components/section/Section3";
 import { Title } from "@/components/title/Title";
-import { TourItem } from "@/components/tours/TourItem";
+import { TourItem } from "@/components/tour/TourItem";
 import { Section8 } from "@/components/section/Section8";
 import { HomeBanner } from "@/components/home/HomeBanner";
+import HomeLastMinuteDeals from "@/components/home/HomeLastMinuteDeals";
 
 export default function HomePage() {
   return (
     <>
       <HomeBanner />
-
-      {/* Section 2 */}
-      <Section2 />
+      <HomeLastMinuteDeals />
 
       {/* Section 3 */}
       <Section3 />

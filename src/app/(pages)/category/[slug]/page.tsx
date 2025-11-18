@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import { TourItem } from "@/components/tours/TourItem";
+import { TourItem } from "@/components/tour/TourItem";
 import Link from "next/link";
 import { useState } from "react";
 import { FaAnglesLeft, FaAnglesRight, FaFilter } from "react-icons/fa6";
