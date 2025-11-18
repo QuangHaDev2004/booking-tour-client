@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap");
 @import "tailwindcss";
-@plugin "daisyui";
+@plugin "daisyui" {
+  exclude: scrollbar;
+}
 
 @theme {
   --breakpoint-sm: 576px;
@@ -13,19 +15,14 @@
   --color-travel-secondary: #25282b;
   --color-travel-yellow: #ffd600;
   --color-travel-red: #da0808;
-  --color-travel-gray: #a6a6a6;
-  --color-travel-gray-2: #747578;
-  --color-travel-gray-3: #898b8d;
+  --color-travel-gray-100: #a6a6a6;
+  --color-travel-gray-500: #898b8d;
+  --color-travel-gray-900: #747578;
   --color-travel-overlay: #00000088;
 }
 
 * {
   font-family: "Lexend", sans-serif;
-}
-
-html,
-body {
-  scroll-behavior: smooth !important;
 }
 
 .container {
@@ -75,4 +72,29 @@ input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+/* React Date Picker */
+.rdp-day_button {
+  border-radius: 100%;
+}
+
+.rdp-selected .rdp-day_button {
+  background-color: var(--color-travel-primary);
+}
+
+.rdp-today .rdp-day_button {
+  background-color: transparent;
+  color: var(--color-travel-red);
+  font-weight: 700;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+  background-color: #d9d9d9;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #b1b1b1;
 }

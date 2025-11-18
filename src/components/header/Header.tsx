@@ -45,12 +45,13 @@ export const Header = () => {
             </button>
 
             {/* Logo */}
-            <Link href={"/"}>
+            <Link href={"/"} className="flex items-center gap-3">
               <img
-                src="/assets/images/Logo.svg"
-                alt="HW Tour Logo"
+                src="/assets/images/logo-icon.svg"
+                alt="Logo"
                 className="h-[50px] w-auto"
               />
+              <p className="uppercase font-extrabold text-2xl text-travel-primary">36.Travel</p>
             </Link>
 
             {/* Menu */}
