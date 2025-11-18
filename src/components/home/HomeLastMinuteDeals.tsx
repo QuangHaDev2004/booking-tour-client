@@ -2,7 +2,7 @@
 import { ClockCountdown } from "../countdown/ClockCountdown";
 import { LastMinuteDealFeatures } from "./LastMinuteDealFeatures";
 
-export default function HomeLastMinuteDeals() {
+export const HomeLastMinuteDeals = () => {
   return (
     <div className="py-[45px] sm:py-[60px]">
       <div className="container">
