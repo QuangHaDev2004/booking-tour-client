@@ -1,10 +1,19 @@
 "use client";
-import { TourItem } from "../tours/TourItem";
+import { TourItem } from "../tour/TourItem";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
+import { useEffect, useState } from "react";
 
-export default function TourFeature() {
+export const LastMinuteDealFeatures = () => {
+  const [isReady, setIsReady] = useState(false);
+
+  useEffect(() => {
+    setIsReady(true);
+  }, []);
+
+  if (!isReady) return <div className="h-[435px]"></div>;
+
   return (
     <div className="w-full md:w-1/2 lg:w-[68%] xl:w-3/4">
       <Swiper
@@ -32,4 +41,4 @@ export default function TourFeature() {
       </Swiper>
     </div>
   );
-}
+};

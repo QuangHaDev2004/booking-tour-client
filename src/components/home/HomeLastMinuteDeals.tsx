@@ -1,14 +1,8 @@
 "use client";
-import dynamic from "next/dynamic";
 import { ClockCountdown } from "../countdown/ClockCountdown";
-import { Spinner } from "../loading/Spinner";
+import { LastMinuteDealFeatures } from "./LastMinuteDealFeatures";
 
-const TourFeature = dynamic(() => import("@/components/tours/TourFeature"), {
-  ssr: false,
-  loading: () => <Spinner />,
-});
-
-export default function Section2() {
+export default function HomeLastMinuteDeals() {
   return (
     <div className="py-[45px] sm:py-[60px]">
       <div className="container">
@@ -35,7 +29,7 @@ export default function Section2() {
           </div>
 
           {/* Features Tour */}
-          <TourFeature />
+          <LastMinuteDealFeatures />
         </div>
       </div>
     </div>

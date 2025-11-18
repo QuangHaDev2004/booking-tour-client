@@ -1,16 +1,23 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import Countdown from "react-countdown";
 
 export const ClockCountdown = ({ expireDate }: { expireDate: string }) => {
-  const [isClient, setIsClient] = useState(false);
+  const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
-    setIsClient(true);
+    setIsReady(true);
   }, []);
 
-  if(!isClient) return null;
+  if (!isReady)
+    return (
+      <div className="mb-[47px] flex justify-center gap-4 text-center">
+        <div className="text-primary h-14 w-14 rounded-lg bg-white"></div>
+        <div className="text-primary h-14 w-14 rounded-lg bg-white"></div>
+        <div className="text-primary h-14 w-14 rounded-lg bg-white"></div>
+        <div className="text-primary h-14 w-14 rounded-lg bg-white"></div>
+      </div>
+    );
 
   return (
     <Countdown
