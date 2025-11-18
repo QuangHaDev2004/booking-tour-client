@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { Title } from "../title/Title";
 
-export const Section8 = () => {
+export const LatestNews = () => {
   return (
     <div className="pb-[45px] sm:pb-[60px]">
       <div className="container">
