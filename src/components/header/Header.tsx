@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-
 "use client";
 import Link from "next/link";
 import {
@@ -9,6 +8,7 @@ import {
   FaEnvelope,
   FaPhone,
 } from "react-icons/fa6";
+import { Logo } from "../common/Logo";
 
 export const Header = () => {
   return (
@@ -45,14 +45,7 @@ export const Header = () => {
             </button>
 
             {/* Logo */}
-            <Link href={"/"} className="flex items-center gap-3">
-              <img
-                src="/assets/images/logo-icon.svg"
-                alt="Logo"
-                className="h-[50px] w-auto"
-              />
-              <p className="uppercase font-extrabold text-2xl text-travel-primary">36.Travel</p>
-            </Link>
+           <Logo />
 
             {/* Menu */}
             <nav className="hidden lg:block">

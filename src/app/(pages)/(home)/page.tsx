@@ -4,6 +4,7 @@ import { HomeDealsCarousel } from "@/components/home/HomeDealsCarousel";
 import { TourList } from "@/components/tour/TourList";
 import { ImageBanner } from "@/components/home/ImageBanner";
 import { LatestNews } from "@/components/home/LatestNews";
+import { FavoriteDestinations } from "@/components/home/FavoriteDestinations";
 
 export default function HomePage() {
   return (
@@ -15,6 +16,7 @@ export default function HomePage() {
       <ImageBanner src="/assets/images/section-5.jpg" />
       <TourList title="Tour Nước Ngoài" href="" />
       <ImageBanner src="/assets/images/section-7.jpg" />
+      <FavoriteDestinations />
       <LatestNews />
     </>
   );
