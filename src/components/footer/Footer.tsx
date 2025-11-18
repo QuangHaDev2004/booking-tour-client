@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa6";
+import { Logo } from "../common/Logo";
 
 export const Footer = () => {
   return (
@@ -22,7 +23,7 @@ export const Footer = () => {
                 placeholder="Nhập email của bạn..."
                 className="h-12 flex-1 rounded-lg border border-[#99A2A5] px-7 text-sm font-medium placeholder:text-[#99A2A5]"
               />
-              <button className="bg-travel-primary w-full cursor-pointer rounded-lg px-6 py-3 text-[16px] font-medium text-[#FDFDFD] capitalize transition-all duration-300 hover:brightness-95 sm:w-auto">
+              <button className="text-travel-primary border-travel-primary hover:bg-travel-primary w-full cursor-pointer rounded-lg border bg-transparent px-6 py-3 text-[16px] font-medium capitalize transition-all duration-300 hover:text-white hover:brightness-95 sm:w-auto">
                 Đăng Ký Ngay
               </button>
             </form>
@@ -100,14 +101,10 @@ export const Footer = () => {
           <hr className="text-[#CCD1D2]" />
           <div className="flex flex-wrap items-center gap-y-5">
             <div className="order-1 w-full text-center text-[13px] font-medium text-[#667479] lg:order-none lg:w-[calc(50%-112px)] lg:text-left">
-              © 2025 HWTour. All rights reserved.
+              © 2025 36Travel. All rights reserved.
             </div>
             <div className="w-full lg:w-[224px]">
-              <img
-                src="/assets/images/Logo.svg"
-                alt=""
-                className="h-[50px] w-full"
-              />
+              <Logo />
             </div>
             <div className="flex w-full items-center justify-center gap-[25px] text-[13px] font-medium text-[#667479] sm:gap-[30px] lg:w-[calc(50%-112px)] lg:justify-end">
               <Link
