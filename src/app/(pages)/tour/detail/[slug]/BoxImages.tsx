@@ -51,7 +51,7 @@ export const BoxImages = () => {
             freeMode={true}
             watchSlidesProgress={true}
             modules={[FreeMode, Thumbs]}
-            className="thumbs"
+            className="mySwiper"
           >
             {isReady ? (
               Array(5)
