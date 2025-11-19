@@ -2,15 +2,16 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 import { useState } from "react";
+import { useClientReady } from "@/hooks/useClientReady";
 import { FreeMode, Thumbs } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/thumbs";
 
 export const BoxImages = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
+  const { isReady } = useClientReady();
 
   return (
     <>
@@ -24,42 +25,19 @@ export const BoxImages = () => {
             modules={[FreeMode, Thumbs]}
             className="overflow-hidden rounded-[10px]"
           >
-            <SwiperSlide>
-              <div className="aspect-[695/480] overflow-hidden rounded-[10px]">
-                <img
-                  src="/assets/images/box-images-demo.jpg"
-                  alt=""
-                  className="h-full w-full cursor-pointer object-cover"
-                />
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="aspect-[695/480] overflow-hidden rounded-[10px]">
-                <img
-                  src="/assets/images/box-images-demo.jpg"
-                  alt=""
-                  className="h-full w-full cursor-pointer object-cover"
-                />
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="aspect-[695/480] overflow-hidden rounded-[10px]">
-                <img
-                  src="/assets/images/box-images-demo.jpg"
-                  alt=""
-                  className="h-full w-full cursor-pointer object-cover"
-                />
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="aspect-[695/480] overflow-hidden rounded-[10px]">
-                <img
-                  src="/assets/images/box-images-demo.jpg"
-                  alt=""
-                  className="h-full w-full cursor-pointer object-cover"
-                />
-              </div>
-            </SwiperSlide>
+            {Array(5)
+              .fill("")
+              .map((_, index) => (
+                <SwiperSlide key={index}>
+                  <div className="aspect-[695/480] overflow-hidden rounded-[10px]">
+                    <img
+                      src="/assets/images/box-images-demo.jpg"
+                      alt=""
+                      className="h-full w-full cursor-pointer object-cover"
+                    />
+                  </div>
+                </SwiperSlide>
+              ))}
           </Swiper>
         </div>
 
@@ -73,44 +51,25 @@ export const BoxImages = () => {
             freeMode={true}
             watchSlidesProgress={true}
             modules={[FreeMode, Thumbs]}
-            className="mySwiper"
+            className="thumbs"
           >
-            <SwiperSlide>
-              <div className="aspect-[166/129] overflow-hidden rounded-[10px]">
-                <img
-                  src="/assets/images/box-images-demo.jpg"
-                  alt=""
-                  className="h-full w-full cursor-pointer object-cover"
-                />
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="aspect-[166/129] overflow-hidden rounded-[10px]">
-                <img
-                  src="/assets/images/box-images-demo.jpg"
-                  alt=""
-                  className="h-full w-full cursor-pointer object-cover"
-                />
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="aspect-[166/129] overflow-hidden rounded-[10px]">
-                <img
-                  src="/assets/images/box-images-demo.jpg"
-                  alt=""
-                  className="h-full w-full cursor-pointer object-cover"
-                />
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="aspect-[166/129] overflow-hidden rounded-[10px]">
-                <img
-                  src="/assets/images/box-images-demo.jpg"
-                  alt=""
-                  className="h-full w-full cursor-pointer object-cover"
-                />
-              </div>
-            </SwiperSlide>
+            {isReady ? (
+              Array(5)
+                .fill("")
+                .map((_, index) => (
+                  <SwiperSlide key={index}>
+                    <div className="aspect-[166/129] overflow-hidden rounded-[10px]">
+                      <img
+                        src="/assets/images/box-images-demo.jpg"
+                        alt=""
+                        className="h-full w-full cursor-pointer object-cover"
+                      />
+                    </div>
+                  </SwiperSlide>
+                ))
+            ) : (
+              <div className="h-[129px]"></div>
+            )}
           </Swiper>
         </div>
       </div>
