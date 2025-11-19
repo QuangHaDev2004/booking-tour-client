@@ -1,5 +1,6 @@
 import { BoxImages } from "./BoxImages";
 import { ProgramHighlight } from "./ProgramHighlight";
+import { TourSchedule } from "./TourSchedule";
 
 export default function TourDetail() {
   return (
@@ -11,6 +12,7 @@ export default function TourDetail() {
             <div className="w-[58.7%]">
               <BoxImages />
               <ProgramHighlight />
+              <TourSchedule />
             </div>
 
             {/* Right */}
