@@ -70,11 +70,18 @@ export const FavoriteDestinations = () => {
   const tabRefs = useRef<HTMLDivElement[]>([]);
 
   useEffect(() => {
-    const positions = tabRefs.current.map((item) => ({
-      width: item.offsetWidth,
-      left: item.offsetLeft,
-    }));
-    setTabPositions(positions);
+    const update = () => {
+      const positions = tabRefs.current.map((item) => ({
+        width: item.offsetWidth,
+        left: item.offsetLeft,
+      }));
+      setTabPositions(positions);
+    };
+
+    update();
+
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
   }, []);
 
   return (
@@ -82,7 +89,7 @@ export const FavoriteDestinations = () => {
       <div className="container">
         <Title title="Điểm đến yêu thích" />
         <div className="mb-10 flex items-center justify-center">
-          <div className="relative flex">
+          <div className="relative flex overflow-x-auto overflow-y-hidden">
             {tabs.map((item, index) => (
               <div
                 key={index}
@@ -91,7 +98,7 @@ export const FavoriteDestinations = () => {
                     tabRefs.current[index] = element; // ref là mảng bên viết như vậy
                   }
                 }}
-                className={`cursor-pointer px-4 py-2.5 text-[16px] font-semibold ${activeTab === index ? "text-travel-primary" : "text-travel-secondary/80 hover:text-travel-primary transition-all duration-300"}`}
+                className={`cursor-pointer px-4 py-2.5 text-[16px] font-semibold whitespace-nowrap ${activeTab === index ? "text-travel-primary" : "text-travel-secondary/80 hover:text-travel-primary transition-all duration-300"}`}
                 onClick={() => setActiveTab(index)}
               >
                 {item}
@@ -100,7 +107,7 @@ export const FavoriteDestinations = () => {
 
             {tabPositions.length > 0 && (
               <div
-                className="bg-travel-primary absolute top-full h-0.5 transition-all duration-500"
+                className="bg-travel-primary absolute bottom-0 h-0.5 transition-all duration-500"
                 style={{
                   width: `${tabPositions[activeTab].width}px`,
                   transform: `translateX(${tabPositions[activeTab].left}px)`,
@@ -110,7 +117,7 @@ export const FavoriteDestinations = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-4 gap-3">
+        <div className="grid grid-cols-2 gap-2.5 sm:gap-3 md:grid-cols-3 lg:grid-cols-4">
           {destinations.map((item) => (
             <div
               key={item.id}

@@ -1,4 +1,5 @@
 import { BoxImages } from "./BoxImages";
+import { ProgramHighlight } from "./ProgramHighlight";
 
 export default function TourDetail() {
   return (
@@ -8,8 +9,8 @@ export default function TourDetail() {
           <div className="flex gap-5">
             {/* Left */}
             <div className="w-[58.7%]">
-              {/* Box Images */}
               <BoxImages />
+              <ProgramHighlight />
             </div>
 
             {/* Right */}

@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const Logo = () => {
   return (
-    <Link href={"/"} className="flex items-center gap-3">
+    <Link href={"/"} className="flex items-center justify-center gap-3">
       <img
         src="/assets/images/logo-icon.svg"
         alt="Logo"

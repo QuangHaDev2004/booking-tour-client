@@ -12,7 +12,7 @@ export const TourItem = () => {
       style={{ boxShadow: "0px 2.38px 2.38px 0px #00000040" }}
       className="group/item overflow-hidden rounded-md bg-white"
     >
-      <div className="-mb-3 aspect-3/2 sm:aspect-[271/237] overflow-hidden rounded-md">
+      <div className="-mb-3 aspect-3/2 md:aspect-[271/237] overflow-hidden rounded-md">
         <Link href={""}>
           <img
             src="https://saigontourist.net/media/private/PIgm7G/hu4iWV/2d537728.jpg.thumb/880x660.jpg"

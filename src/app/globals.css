@@ -19,10 +19,16 @@
   --color-travel-gray-500: #898b8d;
   --color-travel-gray-900: #747578;
   --color-travel-overlay: #00000088;
+
+  --shadow-md: 0px 1.75px 3.51px 0px #0000001f;
 }
 
 * {
   font-family: "Lexend", sans-serif;
+}
+
+body {
+  background-color: #F8F8F8;
 }
 
 .container {
@@ -92,6 +98,7 @@ input[type="number"]::-webkit-outer-spin-button {
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 4px;
+  height: 4px;
   background-color: #d9d9d9;
 }
 
