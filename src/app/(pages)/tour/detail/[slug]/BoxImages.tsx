@@ -3,7 +3,7 @@
 "use client";
 import { useState } from "react";
 import { useClientReady } from "@/hooks/useClientReady";
-import { FreeMode, Thumbs } from "swiper/modules";
+import { Autoplay, FreeMode, Thumbs } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/free-mode";
@@ -16,13 +16,14 @@ export const BoxImages = () => {
   return (
     <>
       <div className="mb-[30px]">
-        <div className="mb-[30px]">
+        <div className="mb-4 sm:mb-[30px]">
           {/* Image Main */}
           <Swiper
             loop={true}
             spaceBetween={10}
             thumbs={{ swiper: thumbsSwiper }}
-            modules={[FreeMode, Thumbs]}
+            modules={[FreeMode, Thumbs, Autoplay]}
+            autoplay={{ delay: 3000, disableOnInteraction: false }}
             className="overflow-hidden rounded-[10px]"
           >
             {Array(5)
@@ -52,6 +53,14 @@ export const BoxImages = () => {
             watchSlidesProgress={true}
             modules={[FreeMode, Thumbs]}
             className="mySwiper"
+            breakpoints={{
+              0: {
+                spaceBetween: 4,
+              },
+              576: {
+                spaceBetween: 10,
+              },
+            }}
           >
             {isReady ? (
               Array(5)

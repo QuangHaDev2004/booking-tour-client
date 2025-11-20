@@ -6,7 +6,7 @@ export const ProgramHighlight = () => {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <div className="mt-[30px] overflow-hidden rounded-lg bg-white p-5 shadow-md">
+    <div className="mt-[30px] overflow-hidden rounded-lg bg-white p-4  sm:p-5 shadow-md">
       <div className="text-travel-primary border-travel-gray-100/40 mb-4 border-b border-dashed pb-3 text-[20px] font-bold capitalize">
         Điểm nhấn của chương trình
       </div>
