@@ -48,14 +48,14 @@ export const ButtonBackToTop = () => {
     <>
       <button
         onClick={handleBackToTop}
-        className={`fixed z-[999] right-[18px] bottom-8 h-[46px] w-[46px] cursor-pointer rounded-full transition-all duration-300 ${isVisible ? "scale-100 opacity-100" : "pointer-events-none scale-75 opacity-0"}`}
+        className={`fixed right-[18px] bottom-8 z-[999] h-[46px] w-[46px] cursor-pointer rounded-full transition-all duration-300 ${isVisible ? "scale-100 opacity-100" : "pointer-events-none scale-75 opacity-0"}`}
       >
         <svg width={46} height={46} viewBox="0 0 46 46">
           {/* Vòng tròn nền */}
           <circle
             strokeWidth={2}
-            stroke="#F9F7F7"
-            fill="none"
+            stroke="#DAEFFF"
+            fill="white"
             r={21}
             cx={23} // tâm tọa độ hình tròn
             cy={23}
