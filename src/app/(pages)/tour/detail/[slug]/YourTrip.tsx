@@ -3,6 +3,7 @@
 import { CounterInput } from "@/components/common/CounterInput";
 import { useState } from "react";
 import { FaRegCalendarAlt } from "react-icons/fa";
+import { FaCar } from "react-icons/fa6";
 import { GrMapLocation } from "react-icons/gr";
 import { HiOutlineUserGroup } from "react-icons/hi";
 import { IoTicketOutline } from "react-icons/io5";
@@ -64,6 +65,13 @@ export const YourTrip = () => {
             Thời gian:
           </div>
           <div className="text-travel-primary font-semibold">5N4Đ</div>
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1">
+            <FaCar size={20} />
+            Phương tiện:
+          </div>
+          <div className="text-travel-primary font-semibold">Máy bay</div>
         </div>
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-1">
