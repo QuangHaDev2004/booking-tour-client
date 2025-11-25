@@ -26,7 +26,7 @@ export const TourItem = () => {
         Giảm -30%
       </div>
       <div className="p-2.5">
-        <h2 className="text-travel-secondary hover:text-travel-primary mb-2 line-clamp-2 text-[16px] font-bold transition-all duration-300">
+        <h2 className="text-travel-secondary hover:text-travel-primary mb-2 line-clamp-2 text-[16px] font-semibold transition-all duration-300">
           <Link href={""}>
             Tour 2024 Phú Quốc – Thiên Đường Đảo Ngọc (3N2D)
           </Link>
@@ -48,14 +48,14 @@ export const TourItem = () => {
           </div>
         </div>
         <div className="border-travel-red flex h-10 items-center justify-between rounded-4xl border">
-          <div className="px-3 text-[16px] font-semibold">
+          <div className="px-3 text-[16px] font-semibold text-travel-primary">
             10.000.000<span className="underline">đ</span>
           </div>
           <Link
             href={""}
             className="bg-travel-red group/button relative flex h-10 items-center justify-center overflow-hidden rounded-4xl px-4 text-sm font-semibold text-white uppercase transition-colors duration-500"
           >
-            <span className="bg-travel-secondary absolute inset-0 -translate-x-full transition-transform duration-500 group-hover/button:translate-x-0"></span>
+            <span className="bg-travel-primary absolute inset-0 -translate-x-full transition-transform duration-500 group-hover/button:translate-x-0"></span>
             <span className="relative">Đặt ngay</span>
           </Link>
         </div>

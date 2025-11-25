@@ -1,10 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
+"use client";
+import { useWebsiteInfo } from "@/hooks/home/useWebsiteInfo";
 import Link from "next/link";
 import { FaPhoneVolume } from "react-icons/fa6";
 
 export const BoxContact = () => {
+  const { websiteInfo } = useWebsiteInfo();
   return (
-    <div className="fab fixed right-4 bottom-24">
+    <div className="fab fixed right-4 bottom-24 z-[998]">
       <div
         tabIndex={0}
         role="button"
@@ -21,7 +24,7 @@ export const BoxContact = () => {
       </div>
 
       <Link
-        href={"/"}
+        href={websiteInfo.facebook || "/"}
         target="_blank"
         className="btn btn-lg btn-circle border-none"
       >

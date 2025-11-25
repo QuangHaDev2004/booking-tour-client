@@ -4,6 +4,7 @@ import { Header } from "@/components/header/Header";
 import { Footer } from "@/components/footer/Footer";
 import { BoxContact } from "@/components/box-contact/BoxContact";
 import { ButtonBackToTop } from "@/components/button/ButtonBackToTop";
+import { QueryProvider } from "@/providers/QueryProvider";
 
 export const metadata: Metadata = {
   title: "36.Travel - Đặt Tour du lịch tiện lợi và nhanh chóng",
@@ -18,11 +19,13 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <Header />
-        {children}
-        <Footer />
-        <BoxContact />
-        <ButtonBackToTop />
+        <QueryProvider>
+          <Header />
+          {children}
+          <Footer />
+          <BoxContact />
+          <ButtonBackToTop />
+        </QueryProvider>
       </body>
     </html>
   );
