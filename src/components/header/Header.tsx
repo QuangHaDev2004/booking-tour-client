@@ -9,28 +9,42 @@ import {
   FaPhone,
 } from "react-icons/fa6";
 import { Logo } from "../common/Logo";
+import { useWebsiteInfo } from "@/hooks/home/useWebsiteInfo";
+import { Swing } from "../loading/Swing";
+import { useCategoryList } from "@/hooks/home/useCategoryList";
 
 export const Header = () => {
+  const { websiteInfo, isPending } = useWebsiteInfo();
+  const { categoryList } = useCategoryList();
+
+  if (isPending) return <Swing />;
+
   return (
     <>
       {/* Top Header */}
       <div className="bg-travel-primary hidden py-3 text-[#FFFBEB] md:block">
         <div className="container">
           <div className="flex items-center justify-end gap-10">
-            <div className="flex items-center gap-2">
-              <FaPhone className="text-xl" />
-              <span className="text-sm font-normal">0123.456.789</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <FaEnvelope className="text-xl" />
-              <span className="text-sm font-normal">contact@28travel.com</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <FaBuilding className="text-xl" />
-              <span className="text-sm font-normal">
-                Số 123, đường ABC, thành phố XYZ
-              </span>
-            </div>
+            {websiteInfo.phone && (
+              <div className="flex items-center gap-2">
+                <FaPhone className="text-xl" />
+                <span className="text-sm font-normal">{websiteInfo.phone}</span>
+              </div>
+            )}
+            {websiteInfo.email && (
+              <div className="flex items-center gap-2">
+                <FaEnvelope className="text-xl" />
+                <span className="text-sm font-normal">{websiteInfo.email}</span>
+              </div>
+            )}
+            {websiteInfo.address && (
+              <div className="flex items-center gap-2">
+                <FaBuilding className="text-xl" />
+                <span className="text-sm font-normal">
+                  {websiteInfo.address}
+                </span>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -45,72 +59,53 @@ export const Header = () => {
             </button>
 
             {/* Logo */}
-           <Logo />
+            <Logo
+              websiteName={websiteInfo.websiteName}
+              logo={websiteInfo.logo}
+            />
 
             {/* Menu */}
             <nav className="hidden lg:block">
               <ul className="flex gap-6 xl:gap-10">
                 <li>
                   <Link
-                    href=""
+                    href="/"
                     className="text-travel-secondary text-[16px] font-medium capitalize"
                   >
                     Trang Chủ
                   </Link>
                 </li>
-                <li className="group/sub-1 relative flex items-center gap-1.5">
-                  <Link
-                    href=""
-                    className="text-travel-secondary text-[16px] font-medium capitalize"
+                {categoryList.map((cate) => (
+                  <li
+                    key={cate.id}
+                    className="group/sub-1 relative flex items-center gap-1.5"
                   >
-                    Tour Trong Nước
-                  </Link>
-                  <FaCaretDown className="text-sm" />
-                  <ul className="invisible absolute top-full left-0 w-[280px] translate-y-2 rounded-br-lg rounded-bl-lg bg-white py-2 opacity-0 shadow-md transition-all duration-300 group-hover/sub-1:visible group-hover/sub-1:translate-y-0 group-hover/sub-1:opacity-100">
-                    <li>
-                      <Link
-                        href={""}
-                        className="text-travel-primary hover:bg-travel-primary block px-[22px] py-2 text-[16px] font-normal capitalize transition-all duration-300 hover:text-white"
-                      >
-                        Tour Miền Bắc
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href={""}
-                        className="text-travel-primary hover:bg-travel-primary block px-[22px] py-2 text-[16px] font-normal capitalize transition-all duration-300 hover:text-white"
-                      >
-                        Tour Miền Trung
-                      </Link>
-                    </li>
+                    <Link
+                      href={`/category/${cate.slug}`}
+                      className="text-travel-secondary text-[16px] font-medium capitalize"
+                    >
+                      {cate.name}
+                    </Link>
+                    {cate.children && cate.children.length > 0 && (
+                      <>
+                        <FaCaretDown className="text-sm" />
+                        <ul className="invisible absolute top-full left-0 w-[280px] translate-y-2 rounded-br-lg rounded-bl-lg bg-white py-2 opacity-0 shadow-md transition-all duration-300 group-hover/sub-1:visible group-hover/sub-1:translate-y-0 group-hover/sub-1:opacity-100">
+                          {cate.children.map((cate2) => (
+                            <li key={cate2.id}>
+                              <Link
+                                href={`/category/${cate2.slug}`}
+                                className="text-travel-primary hover:bg-travel-primary block px-[22px] py-2 text-[16px] font-normal capitalize transition-all duration-300 hover:text-white"
+                              >
+                                {cate2.name}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </>
+                    )}
+                  </li>
+                ))}
 
-                    <li>
-                      <Link
-                        href={""}
-                        className="text-travel-primary hover:bg-travel-primary block px-[22px] py-2 text-[16px] font-normal capitalize transition-all duration-300 hover:text-white"
-                      >
-                        Tour Miền Nam
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href={""}
-                        className="text-travel-primary hover:bg-travel-primary block px-[22px] py-2 text-[16px] font-normal capitalize transition-all duration-300 hover:text-white"
-                      >
-                        Tour Xuyên Việt
-                      </Link>
-                    </li>
-                  </ul>
-                </li>
-                <li className="flex items-center gap-1.5">
-                  <Link
-                    href=""
-                    className="text-travel-secondary text-[16px] font-medium capitalize"
-                  >
-                    Tour Nước Ngoài
-                  </Link>
-                  <FaCaretDown className="text-sm" />
-                </li>
                 <li>
                   <Link
                     href=""
@@ -131,7 +126,7 @@ export const Header = () => {
             </nav>
 
             {/* Cart */}
-            <Link href={""} className="inline-flex items-center gap-1">
+            <Link href={"/cart"} className="inline-flex items-center gap-1">
               <img
                 src="/assets/images/icon-cart.svg"
                 alt="Giỏ hàng"

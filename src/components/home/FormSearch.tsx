@@ -26,7 +26,7 @@ export const FormSearch = () => {
       <div className="flex h-[58px] w-full items-center gap-3 rounded-md bg-white px-3 py-2">
         <GrMapLocation className="text-travel-primary size-5" />
         <div className="flex flex-1 flex-col">
-          <p className="text-travel-secondary pb-0.5 text-sm font-bold">
+          <p className="text-travel-secondary pb-0.5 text-sm font-medium">
             Bạn muốn đi đâu?
           </p>
           <input
@@ -41,7 +41,7 @@ export const FormSearch = () => {
       <div className="flex h-[58px] w-full items-center gap-3 rounded-md bg-white px-3 py-2 md:w-[37.5%]">
         <FaRegCalendar className="text-travel-primary size-5" />
         <div className="flex flex-1 flex-col">
-          <p className="text-travel-secondary text-sm font-bold">
+          <p className="text-travel-secondary text-sm font-medium">
             Ngày khởi hành
           </p>
           <div className="relative w-full">
@@ -78,7 +78,7 @@ export const FormSearch = () => {
       <div className="flex h-[58px] w-full items-center gap-3 rounded-md bg-white px-3 py-2 md:w-[37.5%]">
         <LuCircleDollarSign className="text-travel-primary size-5" />
         <div className="flex flex-1 flex-col">
-          <p className="text-travel-secondary pb-0.5 text-sm font-bold">
+          <p className="text-travel-secondary pb-0.5 text-sm font-medium">
             Ngân sách
           </p>
           <select
