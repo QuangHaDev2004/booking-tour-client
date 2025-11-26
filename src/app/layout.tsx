@@ -5,6 +5,7 @@ import { Footer } from "@/components/footer/Footer";
 import { BoxContact } from "@/components/box-contact/BoxContact";
 import { ButtonBackToTop } from "@/components/button/ButtonBackToTop";
 import { QueryProvider } from "@/providers/QueryProvider";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: "36.Travel - Đặt Tour du lịch tiện lợi và nhanh chóng",
@@ -25,6 +26,8 @@ export default function RootLayout({
           <Footer />
           <BoxContact />
           <ButtonBackToTop />
+
+          <Toaster richColors />
         </QueryProvider>
       </body>
     </html>

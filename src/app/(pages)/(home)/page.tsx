@@ -5,19 +5,21 @@ import { TourList } from "@/components/tour/TourList";
 import { ImageBanner } from "@/components/home/ImageBanner";
 import { LatestNews } from "@/components/home/LatestNews";
 import { FavoriteDestinations } from "@/components/home/FavoriteDestinations";
-import { getLastMinuteDeals } from "@/services/home";
+import { getLastMinuteDeals, getTourList } from "@/services/home";
 
 export default async function HomePage() {
   const { tourListDeal } = await getLastMinuteDeals();
+  const { tourListOne, categoryTourListOne, tourListTwo, categoryTourListTwo } =
+    await getTourList();
 
   return (
     <>
       <HomeBanner />
       <HomeLastMinuteDeals tourListDeal={tourListDeal} />
       <HomeDealsCarousel />
-      <TourList title="Tour Trong Nước" href="" />
+      <TourList category={categoryTourListOne} tour={tourListOne} />
       <ImageBanner src="/assets/images/section-5.jpg" />
-      <TourList title="Tour Nước Ngoài" href="" />
+      <TourList category={categoryTourListTwo} tour={tourListTwo} />
       <ImageBanner src="/assets/images/section-7.jpg" />
       <FavoriteDestinations />
       <LatestNews />
