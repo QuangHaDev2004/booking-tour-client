@@ -1,23 +1,30 @@
+import { TourDetail } from "@/types/tour";
 import { ButtonViewAll } from "../button/ButtonViewAll";
 import { Title } from "../title/Title";
 import { TourItem } from "./TourItem";
+import { CategoryDetail } from "@/types/category";
 
-export const TourList = ({ title, href }: { title: string; href: string }) => {
+export const TourList = ({
+  category,
+  tour,
+}: {
+  category: CategoryDetail;
+  tour: TourDetail[];
+}) => {
   return (
     <div className="pb-[45px] sm:pb-[60px]">
       <div className="container">
-        <Title title={title} />
-        <div className="mb-[25px] grid grid-cols-1 gap-2.5 sm:mb-[30px] sm:gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          <TourItem />
-          <TourItem />
-          <TourItem />
-          <TourItem />
-          <TourItem />
-          <TourItem />
-          <TourItem />
-          <TourItem />
-        </div>
-        <ButtonViewAll href={href} />
+        {category && category.name && <Title title={category.name} />}
+        {tour && tour.length > 0 && (
+          <>
+            <div className="mb-[25px] grid grid-cols-1 gap-2.5 sm:mb-[30px] sm:gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {tour.map((item) => (
+                <TourItem key={item.id} item={item} />
+              ))}
+            </div>
+            <ButtonViewAll href={`/category/${category.slug}`} />
+          </>
+        )}
       </div>
     </div>
   );

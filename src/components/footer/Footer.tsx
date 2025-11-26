@@ -3,6 +3,7 @@ import Link from "next/link";
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa6";
 import { Logo } from "../common/Logo";
 import { useWebsiteInfo } from "@/hooks/home/useWebsiteInfo";
+import { FormSendEmail } from "./FormSendEmail";
 
 export const Footer = () => {
   const { websiteInfo } = useWebsiteInfo();
@@ -15,21 +16,7 @@ export const Footer = () => {
             <div className="w-full text-center text-lg font-bold text-[#FDFDFD] capitalize lg:w-[389px] lg:text-left lg:text-[20px]">
               Đăng ký ngay để không bỏ lỡ các chương trình của chúng tôi
             </div>
-            <form
-              action=""
-              className="flex flex-1 flex-wrap items-center gap-3 rounded-[14px] bg-white p-3"
-            >
-              <input
-                type="email"
-                name=""
-                id=""
-                placeholder="Nhập email của bạn..."
-                className="h-12 flex-1 rounded-lg border border-[#99A2A5] px-7 text-sm font-medium placeholder:text-[#99A2A5]"
-              />
-              <button className="text-travel-primary border-travel-primary hover:bg-travel-primary w-full cursor-pointer rounded-lg border bg-transparent px-6 py-3 text-[16px] font-medium capitalize transition-all duration-300 hover:text-white hover:brightness-95 sm:w-auto">
-                Đăng Ký Ngay
-              </button>
-            </form>
+            <FormSendEmail />
           </div>
           <div className="flex flex-wrap items-center justify-center gap-y-5 lg:justify-between">
             <nav>
