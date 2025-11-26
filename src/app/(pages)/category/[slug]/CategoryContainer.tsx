@@ -3,14 +3,13 @@ import { useState } from "react";
 import { Filter } from "./Filter";
 import { TourList } from "./TourList";
 import { CategoryDetail } from "@/types/category";
-import { TourDetail } from "@/types/tour";
 
 export const CategoryContainer = ({
   categoryDetail,
-  tourList
+  slug,
 }: {
   categoryDetail: CategoryDetail;
-  tourList: TourDetail[]
+  slug: string;
 }) => {
   const [filterActive, setFilterActive] = useState(false);
 
@@ -23,6 +22,7 @@ export const CategoryContainer = ({
               filterActive={filterActive}
               setFilterActive={setFilterActive}
             />
+
             <div className="flex-1">
               <h2 className="text-travel-primary mb-2.5 text-2xl font-semibold capitalize sm:text-[28px]">
                 {categoryDetail.name}
@@ -34,7 +34,7 @@ export const CategoryContainer = ({
                 }}
               ></div>
 
-              <TourList setFilterActive={setFilterActive} tourList={tourList} />
+              <TourList setFilterActive={setFilterActive} slug={slug} />
             </div>
           </div>
         </div>

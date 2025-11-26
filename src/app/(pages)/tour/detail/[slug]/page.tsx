@@ -4,7 +4,7 @@ import { ProgramHighlight } from "./ProgramHighlight";
 import { TourSchedule } from "./TourSchedule";
 import { YourTrip } from "./YourTrip";
 
-export default function TourDetail() {
+export default function TourDetailPage() {
   return (
     <>
       <BreadCrumb />

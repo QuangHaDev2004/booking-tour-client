@@ -34,9 +34,10 @@ export const Filter = ({
   };
 
   const handleApplyFilter = () => {
-    const params = new URLSearchParams();
+    const params = new URLSearchParams(searchParams);
     Object.entries(filters).forEach(([key, value]) => {
       if (value) params.set(key, value);
+      else params.delete(key);
     });
 
     router.push(`/search?${params.toString()}`, { scroll: false });
