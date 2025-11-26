@@ -8,12 +8,13 @@ export default async function TourList({
   params: { slug: string };
 }) {
   const { slug } = await params;
-  const { breadcrumb } = await getCategoryDetail(slug);
+  const { breadcrumb, categoryDetail, tourList } =
+    await getCategoryDetail(slug);
 
   return (
     <>
       <BreadCrumb breadcrumb={breadcrumb} />
-      <CategoryContainer />
+      <CategoryContainer categoryDetail={categoryDetail} tourList={tourList} />
     </>
   );
 }
