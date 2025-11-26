@@ -4,8 +4,13 @@ import { useClientReady } from "@/hooks/useClientReady";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
+import { TourDetail } from "@/types/tour";
 
-export const LastMinuteDealFeatures = () => {
+export const LastMinuteDealFeatures = ({
+  tourListDeal,
+}: {
+  tourListDeal: TourDetail[];
+}) => {
   const { isReady } = useClientReady();
 
   if (!isReady) return <div className="h-[435px]"></div>;
@@ -22,18 +27,11 @@ export const LastMinuteDealFeatures = () => {
           1200: { slidesPerView: 3 },
         }}
       >
-        <SwiperSlide>
-          <TourItem />
-        </SwiperSlide>
-        <SwiperSlide>
-          <TourItem />
-        </SwiperSlide>
-        <SwiperSlide>
-          <TourItem />
-        </SwiperSlide>
-        <SwiperSlide>
-          <TourItem />
-        </SwiperSlide>
+        {tourListDeal.map((item) => (
+          <SwiperSlide key={item.id}>
+            <TourItem item={item} />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   );
