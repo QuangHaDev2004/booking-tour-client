@@ -1,17 +1,14 @@
-"use client";
 import { EmptyState } from "@/components/common/EmptyState";
 import { TourItem } from "@/components/tour/TourItem";
-import { useTourList } from "@/hooks/useTourList";
+import { useSearch } from "@/hooks/search/useSearch";
 import { FaAnglesLeft, FaAnglesRight, FaFilter } from "react-icons/fa6";
 
 export const TourList = ({
   setFilterActive,
-  slug,
 }: {
   setFilterActive: React.Dispatch<React.SetStateAction<boolean>>;
-  slug: string;
 }) => {
-  const { tourList } = useTourList({ slug });
+  const { tourList } = useSearch();
 
   return (
     <>

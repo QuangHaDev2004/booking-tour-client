@@ -1,25 +1,44 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import { FaMagnifyingGlass, FaRegCalendar } from "react-icons/fa6";
 import { LuCircleDollarSign } from "react-icons/lu";
 import { GrMapLocation } from "react-icons/gr";
-import { DayPicker } from "react-day-picker";
 import { useState } from "react";
-import { vi } from "date-fns/locale";
+import { filterPrice } from "@/constants/filter";
+import { useRouter } from "next/navigation";
 
 export const FormSearch = () => {
-  const [date, setDate] = useState<Date | undefined>();
-  const [price, setPrice] = useState("Chọn mức giá");
+  const router = useRouter();
 
-  const options = [
-    "Dưới 5 triệu",
-    "Từ 5 - 10 triệu",
-    "Từ 10 - 20 triệu",
-    "Trên 20 triệu",
-  ];
+  const initialSearch = {
+    keyword: "",
+    departureDate: "",
+    price: "",
+  };
+
+  const [search, setSearch] = useState(initialSearch);
+
+  const handleUpdateSearch = (key: string, value: string) => {
+    setSearch((prev) => ({
+      ...prev,
+      [key]: value,
+    }));
+  };
+
+  const handleSubmitSearch = (e: any) => {
+    e.preventDefault();
+
+    const params = new URLSearchParams();
+    Object.entries(search).forEach(([key, value]) => {
+      if (value) params.set(key, value);
+    });
+
+    router.push(`/search?${params.toString()}`, { scroll: false });
+  };
 
   return (
     <form
-      action=""
+      onSubmit={handleSubmitSearch}
       className="flex flex-wrap gap-3 rounded-md bg-[#00000066] p-4 md:gap-4 md:p-6 lg:gap-5 lg:p-10"
     >
       {/* Location */}
@@ -30,6 +49,7 @@ export const FormSearch = () => {
             Bạn muốn đi đâu?
           </p>
           <input
+            onChange={(e) => handleUpdateSearch("keyword", e.target.value)}
             type="text"
             placeholder="ví dụ: Đã Nẵng, Phú Quốc, Nhật Bản, Hàn Quốc, Mỹ"
             className="placeholder:text-travel-gray-100 text-sm font-normal"
@@ -44,33 +64,13 @@ export const FormSearch = () => {
           <p className="text-travel-secondary text-sm font-medium">
             Ngày khởi hành
           </p>
-          <div className="relative w-full">
-            <button
-              type="button"
-              popoverTarget="rdp-popover"
-              className="text-travel-secondary w-full text-left text-sm font-normal"
-              style={{ anchorName: "--rdp" } as React.CSSProperties}
-            >
-              {date
-                ? date.toLocaleDateString()
-                : new Date().toLocaleDateString()}
-            </button>
-            <div
-              popover="auto"
-              id="rdp-popover"
-              className="dropdown"
-              style={{ positionAnchor: "--rdp" } as React.CSSProperties}
-            >
-              <DayPicker
-                className="react-day-picker"
-                mode="single"
-                selected={date}
-                onSelect={setDate}
-                locale={vi}
-                disabled={{ before: new Date() }}
-              />
-            </div>
-          </div>
+          <input
+            type="date"
+            className="text-sm"
+            onChange={(e) =>
+              handleUpdateSearch("departureDate", e.target.value)
+            }
+          />
         </div>
       </div>
 
@@ -83,19 +83,19 @@ export const FormSearch = () => {
           </p>
           <select
             className="select h-auto w-full border-none bg-none p-0 text-sm shadow-none [&>option::checkmark]:hidden"
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
+            value={search.price}
+            onChange={(e) => handleUpdateSearch("price", e.target.value)}
           >
-            <option disabled className="mb-2 p-0">
+            <option disabled value={""} className="mb-2 p-0">
               Chọn mức giá
             </option>
-            {options.map((item) => (
+            {filterPrice.map((item) => (
               <option
-                key={item}
-                value={item}
-                className={`border-travel-gray-100 mb-2 border last:mb-0 ${price === item ? "bg-travel-primary text-white" : "hover:border-travel-primary hover:bg-transparent"}`}
+                key={item.id}
+                value={item.value}
+                className={`border-travel-gray-100 mb-2 border last:mb-0 ${search.price === item.value ? "bg-travel-primary text-white" : "hover:border-travel-primary hover:bg-transparent"}`}
               >
-                {item}
+                {item.label}
               </option>
             ))}
           </select>
