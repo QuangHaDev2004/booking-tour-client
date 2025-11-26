@@ -1,10 +1,18 @@
 import { BreadCrumb } from "@/components/breadcrumb/BreadCrumb";
 import { CategoryContainer } from "./CategoryContainer";
+import { getCategoryDetail } from "@/services/category";
 
-export default function TourList() {
+export default async function TourList({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const { slug } = await params;
+  const { breadcrumb } = await getCategoryDetail(slug);
+
   return (
     <>
-      <BreadCrumb />
+      <BreadCrumb breadcrumb={breadcrumb} />
       <CategoryContainer />
     </>
   );
