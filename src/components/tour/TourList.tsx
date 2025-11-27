@@ -1,7 +1,7 @@
-import { TourDetail } from "@/types/tour";
+import { TourItem } from "@/types/tour";
 import { ButtonViewAll } from "../button/ButtonViewAll";
 import { Title } from "../title/Title";
-import { TourItem } from "./TourItem";
+import { TourCard } from "./TourCart";
 import { CategoryDetail } from "@/types/category";
 
 export const TourList = ({
@@ -9,7 +9,7 @@ export const TourList = ({
   tour,
 }: {
   category: CategoryDetail;
-  tour: TourDetail[];
+  tour: TourItem[];
 }) => {
   return (
     <div className="pb-[45px] sm:pb-[60px]">
@@ -19,7 +19,7 @@ export const TourList = ({
           <>
             <div className="mb-[25px] grid grid-cols-1 gap-2.5 sm:mb-[30px] sm:gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {tour.map((item) => (
-                <TourItem key={item.id} item={item} />
+                <TourCard key={item.id} item={item} />
               ))}
             </div>
             <ButtonViewAll href={`/category/${category.slug}`} />

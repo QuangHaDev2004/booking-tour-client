@@ -1,13 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import { TourDetail } from "@/types/tour";
+import { TourItem } from "@/types/tour";
 import Link from "next/link";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import { FaBolt } from "react-icons/fa6";
 import { GrMapLocation } from "react-icons/gr";
 import { LuAlarmClock } from "react-icons/lu";
 
-export const TourItem = ({ item }: { item: TourDetail }) => {
+export const TourCard = ({ item }: { item: TourItem }) => {
   if (!item) return null;
 
   return (

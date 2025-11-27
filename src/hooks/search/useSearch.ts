@@ -1,5 +1,5 @@
 import { getSearchResults } from "@/services/search";
-import { TourDetail } from "@/types/tour";
+import { TourItem } from "@/types/tour";
 import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "next/navigation";
 
@@ -16,7 +16,7 @@ export const useSearch = () => {
     queryFn: () => getSearchResults(params),
   });
 
-  const tourList: TourDetail[] = data?.tourList ?? [];
+  const tourList: TourItem[] = data?.tourList ?? [];
 
   return {
     tourList,

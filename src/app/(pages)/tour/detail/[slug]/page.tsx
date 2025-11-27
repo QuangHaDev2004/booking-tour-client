@@ -1,6 +1,6 @@
 import { BreadCrumb } from "@/components/breadcrumb/BreadCrumb";
 import { BoxImages } from "./BoxImages";
-import { ProgramHighlight } from "./ProgramHighlight";
+import { TourInfo } from "./TourInfo";
 import { TourSchedule } from "./TourSchedule";
 import { YourTrip } from "./YourTrip";
 import { getTourDetail } from "@/services/tour";
@@ -23,13 +23,13 @@ export default async function TourDetailPage({
             {/* Left */}
             <div className="order-1 w-full lg:order-none lg:w-[58.7%]">
               <BoxImages tourDetail={tourDetail} />
-              <ProgramHighlight />
-              <TourSchedule />
+              <TourInfo tourDetail={tourDetail} />
+              <TourSchedule tourDetail={tourDetail} />
             </div>
 
             {/* Right */}
             <div className="w-full flex-none lg:flex-1">
-              <YourTrip />
+              <YourTrip tourDetail={tourDetail} />
             </div>
           </div>
         </div>
