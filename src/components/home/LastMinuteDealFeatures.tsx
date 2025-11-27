@@ -1,15 +1,15 @@
 "use client";
-import { TourItem } from "../tour/TourItem";
+import { TourCard } from "../tour/TourCart";
 import { useClientReady } from "@/hooks/useClientReady";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
-import { TourDetail } from "@/types/tour";
+import { TourItem } from "@/types/tour";
 
 export const LastMinuteDealFeatures = ({
   tourListDeal,
 }: {
-  tourListDeal: TourDetail[];
+  tourListDeal: TourItem[];
 }) => {
   const { isReady } = useClientReady();
 
@@ -29,7 +29,7 @@ export const LastMinuteDealFeatures = ({
       >
         {tourListDeal.map((item) => (
           <SwiperSlide key={item.id}>
-            <TourItem item={item} />
+            <TourCard item={item} />
           </SwiperSlide>
         ))}
       </Swiper>

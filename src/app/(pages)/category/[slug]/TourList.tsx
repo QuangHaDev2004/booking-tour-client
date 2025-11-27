@@ -1,6 +1,6 @@
 "use client";
 import { EmptyState } from "@/components/common/EmptyState";
-import { TourItem } from "@/components/tour/TourItem";
+import { TourCard } from "@/components/tour/TourCart";
 import { useTourList } from "@/hooks/useTourList";
 import { FaAnglesLeft, FaAnglesRight, FaFilter } from "react-icons/fa6";
 
@@ -50,7 +50,7 @@ export const TourList = ({
         <>
           <div className="mb-[30px] grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-[20px]">
             {tourList.map((item) => (
-              <TourItem key={item.id} item={item} />
+              <TourCard key={item.id} item={item} />
             ))}
           </div>
 

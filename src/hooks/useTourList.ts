@@ -1,5 +1,5 @@
 import { getCategoryDetail } from "@/services/category";
-import { TourDetail } from "@/types/tour";
+import { TourItem } from "@/types/tour";
 import { useQuery } from "@tanstack/react-query";
 
 export const useTourList = ({ slug }: { slug: string }) => {
@@ -8,7 +8,7 @@ export const useTourList = ({ slug }: { slug: string }) => {
     queryFn: () => getCategoryDetail(slug),
   });
 
-  const tourList: TourDetail[] = data?.tourList ?? [];
+  const tourList: TourItem[] = data?.tourList ?? [];
 
   return {
     tourList,
