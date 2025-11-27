@@ -11,4 +11,5 @@ export type TourDetail = {
     name: string;
   }[];
   discount: string;
+  images?: string[];
 };
