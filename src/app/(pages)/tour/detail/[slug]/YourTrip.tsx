@@ -1,19 +1,56 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 import { CounterInput } from "@/components/common/CounterInput";
+import { useCartStore } from "@/stores/useCartStore";
 import { TourDetail } from "@/types/tour";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import { FaCar } from "react-icons/fa6";
 import { GrMapLocation } from "react-icons/gr";
 import { HiOutlineUserGroup } from "react-icons/hi";
 import { IoTicketOutline } from "react-icons/io5";
 import { LuAlarmClock } from "react-icons/lu";
+import { toast } from "sonner";
 
 export const YourTrip = ({ tourDetail }: { tourDetail: TourDetail }) => {
-  const [adultQuantity, setAdultQuantity] = useState<number | string>(1);
-  const [childrenQuantity, setChildrenQuantity] = useState<number | string>(0);
-  const [babyQuantity, setBabyQuantity] = useState<number | string>(0);
+  const { cart, addToCart } = useCartStore();
+  const cartItem = cart.find((item) => item.tourId === tourDetail.id);
+
+  const [adultInput, setAdultInput] = useState<string>("1");
+  const [childrenInput, setChildrenInput] = useState<string>("0");
+  const [babyInput, setBabyInput] = useState<string>("0");
+  const [adultQuantity, setAdultQuantity] = useState<number>(1);
+  const [childrenQuantity, setChildrenQuantity] = useState<number>(0);
+  const [babyQuantity, setBabyQuantity] = useState<number>(0);
+
+  useEffect(() => {
+    if (cartItem) {
+      setAdultQuantity(cartItem.stockAdult);
+      setAdultInput(String(cartItem.stockAdult));
+
+      setChildrenQuantity(cartItem.stockChildren);
+      setChildrenInput(String(cartItem.stockChildren));
+
+      setBabyQuantity(cartItem.stockBaby);
+      setBabyInput(String(cartItem.stockBaby));
+    }
+  }, [cartItem]);
+
+  const totalPrice =
+    Number(adultQuantity) * tourDetail.priceNewAdult +
+    Number(childrenQuantity) * tourDetail.priceNewChildren +
+    Number(babyQuantity) * tourDetail.priceNewBaby;
+
+  const handleAddToCart = () => {
+    addToCart({
+      tourId: tourDetail.id,
+      stockAdult: adultQuantity,
+      stockChildren: childrenQuantity,
+      stockBaby: babyQuantity,
+    });
+
+    toast.success("Đã thêm tour vào giỏ hàng!");
+  };
 
   return (
     <div className="sticky top-24 right-0 rounded-lg bg-white p-4 shadow-md sm:p-6">
@@ -105,7 +142,7 @@ export const YourTrip = ({ tourDetail }: { tourDetail: TourDetail }) => {
             <div className="flex flex-col gap-2">
               <div className="flex items-center justify-between">
                 <label
-                  htmlFor=""
+                  htmlFor="Adult"
                   className="text-travel-gray-900 mb-1 inline-block w-20 text-sm sm:w-[100px]"
                 >
                   Người lớn:
@@ -113,8 +150,9 @@ export const YourTrip = ({ tourDetail }: { tourDetail: TourDetail }) => {
                 <CounterInput
                   min={1}
                   max={tourDetail.stockAdult}
-                  value={adultQuantity}
+                  value={adultInput}
                   setQuantity={setAdultQuantity}
+                  setInput={setAdultInput}
                 />
                 <div className="text-travel-gray-900 flex-1 text-right">
                   <span className="text-travel-primary text-sm font-semibold sm:text-[16px]">
@@ -125,7 +163,7 @@ export const YourTrip = ({ tourDetail }: { tourDetail: TourDetail }) => {
               </div>
               <div className="flex items-center justify-between">
                 <label
-                  htmlFor=""
+                  htmlFor="Children"
                   className="text-travel-gray-900 mb-1 inline-block w-20 text-sm sm:w-[100px]"
                 >
                   Trẻ em:
@@ -133,8 +171,9 @@ export const YourTrip = ({ tourDetail }: { tourDetail: TourDetail }) => {
                 <CounterInput
                   min={0}
                   max={tourDetail.stockChildren}
-                  value={childrenQuantity}
+                  value={childrenInput}
                   setQuantity={setChildrenQuantity}
+                  setInput={setChildrenInput}
                 />
                 <div className="text-travel-gray-900 flex-1 text-right">
                   <span className="text-travel-primary text-sm font-semibold sm:text-[16px]">
@@ -145,7 +184,7 @@ export const YourTrip = ({ tourDetail }: { tourDetail: TourDetail }) => {
               </div>
               <div className="flex items-center justify-between">
                 <label
-                  htmlFor=""
+                  htmlFor="Baby"
                   className="text-travel-gray-900 mb-1 inline-block w-20 text-sm sm:w-[100px]"
                 >
                   Em bé:
@@ -153,8 +192,9 @@ export const YourTrip = ({ tourDetail }: { tourDetail: TourDetail }) => {
                 <CounterInput
                   min={0}
                   max={tourDetail.stockBaby}
-                  value={babyQuantity}
+                  value={babyInput}
                   setQuantity={setBabyQuantity}
+                  setInput={setBabyInput}
                 />
                 <div className="text-travel-gray-900 flex-1 text-right">
                   <span className="text-travel-primary text-sm font-semibold sm:text-[16px]">
@@ -168,17 +208,20 @@ export const YourTrip = ({ tourDetail }: { tourDetail: TourDetail }) => {
 
           <div className="mb-4 flex items-center justify-between">
             <label
-              htmlFor=""
+              htmlFor="Total Price"
               className="text-travel-secondary text-[16px] font-normal"
             >
               Tổng tiền:
             </label>
             <div className="text-travel-primary text-[20px] font-semibold">
-              10.000.000 đ
+              {totalPrice.toLocaleString("vi-VN")}đ
             </div>
           </div>
 
-          <button className="bg-travel-primary border-travel-primary text hover:text-travel-primary h-11 w-full cursor-pointer rounded-lg border text-[16px] font-semibold text-white transition-all duration-300 hover:bg-transparent">
+          <button
+            onClick={handleAddToCart}
+            className="bg-travel-primary border-travel-primary text hover:text-travel-primary h-11 w-full cursor-pointer rounded-lg border text-[16px] font-semibold text-white transition-all duration-300 hover:bg-transparent"
+          >
             Thêm Vào Giỏ Hàng
           </button>
         </>
