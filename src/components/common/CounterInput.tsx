@@ -5,33 +5,51 @@ export const CounterInput = ({
   max,
   value,
   setQuantity,
+  setInput,
 }: {
   min: number;
   max: number;
-  value: number | string;
-  setQuantity: React.Dispatch<React.SetStateAction<number | string>>;
+  value: string;
+  setQuantity: React.Dispatch<React.SetStateAction<number>>;
+  setInput: React.Dispatch<React.SetStateAction<string>>;
 }) => {
   const handleDown = () => {
-    if (Number(value) > min) {
-      setQuantity((prev) => Number(prev) - 1);
+    let num = Number(value);
+    if (num > min) {
+      num -= 1;
+      setQuantity(num);
+      setInput(num.toString());
     }
+
+    // if (Number(value) > min) {
+    //   setQuantity((prev) => Number(prev) - 1);
+    // }
   };
 
   const handleUp = () => {
-    if (Number(value) < max) {
-      setQuantity((prev) => Number(prev) + 1);
+    let num = Number(value);
+    if (num < max) {
+      num += 1;
+      setQuantity(num);
+      setInput(num.toString());
     }
+
+    // if (Number(value) < max) {
+    //   setQuantity((prev) => Number(prev) + 1);
+    // }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setQuantity(e.target.value);
+    setInput(e.target.value);
   };
 
   const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
     let val = Number(e.target.value);
     if (isNaN(val) || val < min) val = min;
     else if (val > max) val = max;
+
     setQuantity(val);
+    setInput(val.toString());
   };
 
   return (
@@ -49,7 +67,7 @@ export const CounterInput = ({
         value={value}
         onChange={handleChange}
         onBlur={handleBlur}
-        className="focus:ring-travel-primary focus:shadow-travel-primary h-8 w-8 sm:w-10 rounded-md text-center focus:shadow-md focus:ring"
+        className="focus:ring-travel-primary focus:shadow-travel-primary h-8 w-8 rounded-md text-center focus:shadow-md focus:ring sm:w-10"
       />
       <div
         onClick={handleUp}
