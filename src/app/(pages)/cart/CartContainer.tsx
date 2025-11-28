@@ -1,11 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
+import Link from "next/link";
 import { BookingForm } from "./BookingForm";
 import { CounterInput } from "@/components/common/CounterInput";
 import { useCartDetail } from "@/hooks/cart/useCartDetail";
 import { useCartStore } from "@/store/useCartStore";
 import { CartDetail } from "@/types/store";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FaChevronRight, FaXmark } from "react-icons/fa6";
 import { EmptyCart } from "./EmptyCart";
@@ -22,11 +22,11 @@ export type QuantityState = {
 };
 
 export const CartContainer = () => {
-  const { cart, updateCartItem, removeFromCart } = useCartStore();
+  const { cart, updateCartItem, removeFromCart, checkCartItem } =
+    useCartStore();
   const [cartDetail, setCartDetail] = useState<CartDetail[] | null>([]);
   const [quantities, setQuantities] = useState<QuantityState>({});
   const { mutate } = useCartDetail({ setCartDetail });
-  console.log(quantities);
 
   useEffect(() => {
     if (cart.length > 0) {
@@ -58,6 +58,7 @@ export const CartContainer = () => {
 
   const subTotal =
     cartDetail?.reduce((acc, item) => {
+      if (!item.checked) return acc;
       return (
         acc +
         item.quantityAdult * item.priceNewAdult +
@@ -67,6 +68,8 @@ export const CartContainer = () => {
     }, 0) || 0;
   const discount = 0;
   const total = subTotal - discount;
+
+  console.log(cartDetail);
 
   return (
     <>
@@ -93,14 +96,17 @@ export const CartContainer = () => {
                     key={item.tourId}
                     className="border-travel-secondary/10 flex flex-wrap border-b border-dashed pb-4"
                   >
-                    <div className="mb-2.5 flex w-full flex-row-reverse items-center justify-between gap-8 lg:mr-2.5 lg:mb-0 lg:w-auto lg:flex-col lg:justify-start">
+                    <div className="mb-2.5 flex w-full flex-row-reverse items-center justify-between gap-9 lg:mr-2.5 lg:mb-0 lg:w-auto lg:flex-col lg:justify-start">
                       <button onClick={() => removeFromCart(item.tourId)}>
                         <FaXmark className="size-4 cursor-pointer text-[#828282] transition-all duration-300 hover:text-[#DA0808]" />
                       </button>
                       <input
                         type="checkbox"
-                        defaultChecked
-                        className="checkbox checkbox-primary"
+                        checked={item.checked}
+                        onChange={(e) =>
+                          checkCartItem(item.tourId, e.target.checked)
+                        }
+                        className="checkbox checkbox-primary h-5 w-5 rounded-sm"
                       />
                     </div>
 
@@ -321,17 +327,22 @@ export const CartContainer = () => {
                 <div className="text-travel-secondary flex items-center justify-between font-normal">
                   <div className="text-sm">Tạm tính: </div>
                   <div className="text-[16px]">
-                    {subTotal.toLocaleString("vi-VN")}đ
+                    {subTotal.toLocaleString("vi-VN")}
+                    <span className="underline">đ</span>
                   </div>
                 </div>
                 <div className="text-travel-secondary flex items-center justify-between font-normal">
                   <div className="text-sm">Giảm: </div>
-                  <div className="">{discount.toLocaleString("vi-VN")}đ</div>
+                  <div className="">
+                    {discount.toLocaleString("vi-VN")}
+                    <span className="underline">đ</span>
+                  </div>
                 </div>
                 <div className="text-travel-secondary flex items-center justify-between">
                   <div className="text-sm">Thanh toán: </div>
                   <div className="text-travel-primary text-[22px] font-bold">
-                    {total.toLocaleString("vi-VN")}đ
+                    {total.toLocaleString("vi-VN")}
+                    <span className="underline">đ</span>
                   </div>
                 </div>
               </div>
