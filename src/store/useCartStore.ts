@@ -45,6 +45,13 @@ export const useCartStore = create<CartStore>()(
         set((state) => ({
           cart: state.cart.filter((item) => item.tourId !== id),
         })),
+
+      checkCartItem: (id, checked) =>
+        set((state) => ({
+          cart: state.cart.map((item) =>
+            item.tourId === id ? { ...item, checked } : item,
+          ),
+        })),
     }),
     { name: "travel-cart" },
   ),

@@ -47,6 +47,7 @@ export const YourTrip = ({ tourDetail }: { tourDetail: TourDetail }) => {
       quantityAdult: quantityAdult,
       quantityChildren: quantityChildren,
       quantityBaby: quantityBaby,
+      checked: true,
     });
 
     toast.success("Đã thêm tour vào giỏ hàng!");

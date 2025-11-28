@@ -3,6 +3,7 @@ export type CartItem = {
   quantityAdult: number;
   quantityChildren: number;
   quantityBaby: number;
+  checked?: boolean;
 };
 
 export type CartStore = {
@@ -11,6 +12,7 @@ export type CartStore = {
   addToCart: (tour: CartItem) => void;
   updateCartItem: (tour: CartItem) => void;
   removeFromCart: (id: string) => void;
+  checkCartItem: (id: string, checked: boolean) => void;
 };
 
 export type CartDetail = {
@@ -29,4 +31,5 @@ export type CartDetail = {
   priceNewChildren: number;
   priceNewBaby: number;
   slug: string;
+  checked: boolean;
 };
