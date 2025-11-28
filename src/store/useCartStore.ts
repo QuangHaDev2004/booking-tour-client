@@ -40,6 +40,11 @@ export const useCartStore = create<CartStore>()(
               : item,
           ),
         })),
+
+      removeFromCart: (id) =>
+        set((state) => ({
+          cart: state.cart.filter((item) => item.tourId !== id),
+        })),
     }),
     { name: "travel-cart" },
   ),
