@@ -69,8 +69,6 @@ export const CartContainer = () => {
   const discount = 0;
   const total = subTotal - discount;
 
-  console.log(cartDetail);
-
   return (
     <>
       <div className="mx-auto w-full lg:w-[902px]">
