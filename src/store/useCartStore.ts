@@ -17,15 +17,29 @@ export const useCartStore = create<CartStore>()(
             const newCart = [...state.cart];
             newCart[idx] = {
               ...newCart[idx],
-              stockAdult: tour.stockAdult,
-              stockChildren: tour.stockChildren,
-              stockBaby: tour.stockBaby,
+              quantityAdult: tour.quantityAdult,
+              quantityChildren: tour.quantityChildren,
+              quantityBaby: tour.quantityBaby,
             };
             return { cart: newCart };
           }
 
           return { cart: [...state.cart, tour] };
         }),
+
+      updateCartItem: (tour) =>
+        set((state) => ({
+          cart: state.cart.map((item) =>
+            item.tourId === tour.tourId
+              ? {
+                  ...item,
+                  quantityAdult: tour.quantityAdult,
+                  quantityChildren: tour.quantityChildren,
+                  quantityBaby: tour.quantityBaby,
+                }
+              : item,
+          ),
+        })),
     }),
     { name: "travel-cart" },
   ),

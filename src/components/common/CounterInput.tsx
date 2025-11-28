@@ -13,19 +13,6 @@ export const CounterInput = ({
   setQuantity: React.Dispatch<React.SetStateAction<number>>;
   setInput: React.Dispatch<React.SetStateAction<string>>;
 }) => {
-  const handleDown = () => {
-    let num = Number(value);
-    if (num > min) {
-      num -= 1;
-      setQuantity(num);
-      setInput(num.toString());
-    }
-
-    // if (Number(value) > min) {
-    //   setQuantity((prev) => Number(prev) - 1);
-    // }
-  };
-
   const handleUp = () => {
     let num = Number(value);
     if (num < max) {
@@ -33,10 +20,15 @@ export const CounterInput = ({
       setQuantity(num);
       setInput(num.toString());
     }
+  };
 
-    // if (Number(value) < max) {
-    //   setQuantity((prev) => Number(prev) + 1);
-    // }
+  const handleDown = () => {
+    let num = Number(value);
+    if (num > min) {
+      num -= 1;
+      setQuantity(num);
+      setInput(num.toString());
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
