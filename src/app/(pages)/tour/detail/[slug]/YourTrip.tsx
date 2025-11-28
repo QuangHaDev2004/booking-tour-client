@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 import { CounterInput } from "@/components/common/CounterInput";
-import { useCartStore } from "@/stores/useCartStore";
+import { useCartStore } from "@/store/useCartStore";
 import { TourDetail } from "@/types/tour";
 import { useEffect, useState } from "react";
 import { FaRegCalendarAlt } from "react-icons/fa";
@@ -16,37 +16,37 @@ export const YourTrip = ({ tourDetail }: { tourDetail: TourDetail }) => {
   const { cart, addToCart } = useCartStore();
   const cartItem = cart.find((item) => item.tourId === tourDetail.id);
 
-  const [adultInput, setAdultInput] = useState<string>("1");
-  const [childrenInput, setChildrenInput] = useState<string>("0");
-  const [babyInput, setBabyInput] = useState<string>("0");
-  const [adultQuantity, setAdultQuantity] = useState<number>(1);
-  const [childrenQuantity, setChildrenQuantity] = useState<number>(0);
-  const [babyQuantity, setBabyQuantity] = useState<number>(0);
+  const [inputAdult, setInputAdult] = useState<string>("1");
+  const [inputChildren, setInputChildren] = useState<string>("0");
+  const [inputBaby, setInputBaby] = useState<string>("0");
+  const [quantityAdult, setQuantityAdult] = useState<number>(1);
+  const [quantityChildren, setQuantityChildren] = useState<number>(0);
+  const [quantityBaby, setQuantityBaby] = useState<number>(0);
 
   useEffect(() => {
     if (cartItem) {
-      setAdultQuantity(cartItem.stockAdult);
-      setAdultInput(String(cartItem.stockAdult));
+      setQuantityAdult(cartItem.quantityAdult);
+      setInputAdult(String(cartItem.quantityAdult));
 
-      setChildrenQuantity(cartItem.stockChildren);
-      setChildrenInput(String(cartItem.stockChildren));
+      setQuantityChildren(cartItem.quantityChildren);
+      setInputChildren(String(cartItem.quantityChildren));
 
-      setBabyQuantity(cartItem.stockBaby);
-      setBabyInput(String(cartItem.stockBaby));
+      setQuantityBaby(cartItem.quantityBaby);
+      setInputBaby(String(cartItem.quantityBaby));
     }
   }, [cartItem]);
 
   const totalPrice =
-    Number(adultQuantity) * tourDetail.priceNewAdult +
-    Number(childrenQuantity) * tourDetail.priceNewChildren +
-    Number(babyQuantity) * tourDetail.priceNewBaby;
+    quantityAdult * tourDetail.priceNewAdult +
+    quantityChildren * tourDetail.priceNewChildren +
+    quantityBaby * tourDetail.priceNewBaby;
 
   const handleAddToCart = () => {
     addToCart({
       tourId: tourDetail.id,
-      stockAdult: adultQuantity,
-      stockChildren: childrenQuantity,
-      stockBaby: babyQuantity,
+      quantityAdult: quantityAdult,
+      quantityChildren: quantityChildren,
+      quantityBaby: quantityBaby,
     });
 
     toast.success("Đã thêm tour vào giỏ hàng!");
@@ -150,9 +150,9 @@ export const YourTrip = ({ tourDetail }: { tourDetail: TourDetail }) => {
                 <CounterInput
                   min={1}
                   max={tourDetail.stockAdult}
-                  value={adultInput}
-                  setQuantity={setAdultQuantity}
-                  setInput={setAdultInput}
+                  value={inputAdult}
+                  setQuantity={setQuantityAdult}
+                  setInput={setInputAdult}
                 />
                 <div className="text-travel-gray-900 flex-1 text-right">
                   <span className="text-travel-primary text-sm font-semibold sm:text-[16px]">
@@ -171,9 +171,9 @@ export const YourTrip = ({ tourDetail }: { tourDetail: TourDetail }) => {
                 <CounterInput
                   min={0}
                   max={tourDetail.stockChildren}
-                  value={childrenInput}
-                  setQuantity={setChildrenQuantity}
-                  setInput={setChildrenInput}
+                  value={inputChildren}
+                  setQuantity={setQuantityChildren}
+                  setInput={setInputChildren}
                 />
                 <div className="text-travel-gray-900 flex-1 text-right">
                   <span className="text-travel-primary text-sm font-semibold sm:text-[16px]">
@@ -192,9 +192,9 @@ export const YourTrip = ({ tourDetail }: { tourDetail: TourDetail }) => {
                 <CounterInput
                   min={0}
                   max={tourDetail.stockBaby}
-                  value={babyInput}
-                  setQuantity={setBabyQuantity}
-                  setInput={setBabyInput}
+                  value={inputBaby}
+                  setQuantity={setQuantityBaby}
+                  setInput={setInputBaby}
                 />
                 <div className="text-travel-gray-900 flex-1 text-right">
                   <span className="text-travel-primary text-sm font-semibold sm:text-[16px]">
