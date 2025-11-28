@@ -7,8 +7,10 @@ export type CartItem = {
 
 export type CartStore = {
   cart: CartItem[];
+
   addToCart: (tour: CartItem) => void;
   updateCartItem: (tour: CartItem) => void;
+  removeFromCart: (id: string) => void;
 };
 
 export type CartDetail = {

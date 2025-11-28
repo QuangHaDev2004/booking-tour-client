@@ -156,9 +156,10 @@ export const YourTrip = ({ tourDetail }: { tourDetail: TourDetail }) => {
                 />
                 <div className="text-travel-gray-900 flex-1 text-right">
                   <span className="text-travel-primary text-sm font-semibold sm:text-[16px]">
-                    {tourDetail.priceNewAdult.toLocaleString("vi-VN")}đ
+                    {tourDetail.priceNewAdult.toLocaleString("vi-VN")}
+                    <span className="underline">đ</span>
                   </span>
-                  <span className="text-xs sm:text-sm">/khách</span>
+                  <span className="text-xs font-medium"> / Khách</span>
                 </div>
               </div>
               <div className="flex items-center justify-between">
@@ -177,9 +178,10 @@ export const YourTrip = ({ tourDetail }: { tourDetail: TourDetail }) => {
                 />
                 <div className="text-travel-gray-900 flex-1 text-right">
                   <span className="text-travel-primary text-sm font-semibold sm:text-[16px]">
-                    {tourDetail.priceNewChildren.toLocaleString("vi-VN")}đ
+                    {tourDetail.priceNewChildren.toLocaleString("vi-VN")}
+                    <span className="underline">đ</span>
                   </span>
-                  <span className="text-xs sm:text-sm">/khách</span>
+                  <span className="text-xs font-medium"> / Khách</span>
                 </div>
               </div>
               <div className="flex items-center justify-between">
@@ -198,9 +200,10 @@ export const YourTrip = ({ tourDetail }: { tourDetail: TourDetail }) => {
                 />
                 <div className="text-travel-gray-900 flex-1 text-right">
                   <span className="text-travel-primary text-sm font-semibold sm:text-[16px]">
-                    {tourDetail.priceNewBaby.toLocaleString("vi-VN")}đ
+                    {tourDetail.priceNewBaby.toLocaleString("vi-VN")}
+                    <span className="underline">đ</span>
                   </span>
-                  <span className="text-xs sm:text-sm">/khách</span>
+                  <span className="text-xs font-medium"> / Khách</span>
                 </div>
               </div>
             </div>
