@@ -1,4 +1,5 @@
 import { api } from "@/libs/axios";
+import { OrderDetail } from "@/types/order";
 import { CartItem } from "@/types/store";
 
 export const createOrder = async (dataFinal: {
@@ -10,4 +11,21 @@ export const createOrder = async (dataFinal: {
 }) => {
   const res = await api.post("/order/create", dataFinal);
   return res.data;
+};
+
+export const getOrderDetail = async ({
+  orderCode,
+  phone,
+}: {
+  orderCode: string;
+  phone: string;
+}): Promise<OrderDetail> => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/order/success?orderCode=${orderCode}&phone=${phone}`,
+    {
+      cache: "no-store",
+    },
+  );
+  const data = await res.json();
+  return data.orderDetail;
 };
