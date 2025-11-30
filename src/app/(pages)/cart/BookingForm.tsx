@@ -45,12 +45,25 @@ export const BookingForm = () => {
         cart.forEach((item) => {
           if (item.checked) removeFromCart(item.tourId);
         });
-
         reset();
-        toast.success(data.message);
-        router.push(
-          `/order/success?orderCode=${data.orderCode}&phone=${dataFinal.phone}`,
-        );
+
+        switch (dataFinal.paymentMethod) {
+          case "money":
+          case "bank":
+            toast.success(data.message);
+            router.push(
+              `/order/success?orderCode=${data.orderCode}&phone=${dataFinal.phone}`,
+            );
+            break;
+
+          case "zalopay":
+            window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/order/payment-zalopay?orderCode=${data.orderCode}&phone=${dataFinal.phone}`;
+            break;
+
+          case "vnpay":
+            window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/order/payment-vnpay?orderCode=${data.orderCode}&phone=${dataFinal.phone}`;
+            break;
+        }
       },
     });
   };
@@ -121,22 +134,6 @@ export const BookingForm = () => {
               <input
                 {...register("paymentMethod")}
                 type="radio"
-                value="vnpay"
-                className="radio radio-primary h-5 w-5"
-              />
-              <div className="text-travel-secondary text-sm font-normal">
-                VNPay
-              </div>
-              <img
-                src="/assets/images/vnpay.png"
-                alt=""
-                className="h-[35px] w-[70px] rounded-md border border-[#E0E0E0] object-contain px-1"
-              />
-            </label>
-            <label className="flex cursor-pointer items-center gap-2.5">
-              <input
-                {...register("paymentMethod")}
-                type="radio"
                 value="zalopay"
                 className="radio radio-primary h-5 w-5"
               />
@@ -145,6 +142,22 @@ export const BookingForm = () => {
               </div>
               <img
                 src="/assets/images/zalopay.png"
+                alt=""
+                className="h-[35px] w-[70px] rounded-md border border-[#E0E0E0] object-contain px-1"
+              />
+            </label>
+            <label className="flex cursor-pointer items-center gap-2.5">
+              <input
+                {...register("paymentMethod")}
+                type="radio"
+                value="vnpay"
+                className="radio radio-primary h-5 w-5"
+              />
+              <div className="text-travel-secondary text-sm font-normal">
+                VNPay
+              </div>
+              <img
+                src="/assets/images/vnpay.png"
                 alt=""
                 className="h-[35px] w-[70px] rounded-md border border-[#E0E0E0] object-contain px-1"
               />
