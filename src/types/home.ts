@@ -1,4 +1,4 @@
-export type WebsiteInfoDetail = {
+export type WebsiteInfo = {
   websiteName: string;
   phone: string;
   email: string;
@@ -9,9 +9,9 @@ export type WebsiteInfoDetail = {
   favicon: string;
 };
 
-export type CategoryItem = {
+export type CategoryTree = {
   id: string;
   name: string;
   slug: string;
-  children: CategoryItem[];
+  children: CategoryTree[];
 };

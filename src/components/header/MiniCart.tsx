@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+"use client"
 import { useCartStore } from "@/store/useCartStore";
 import Link from "next/link";
 

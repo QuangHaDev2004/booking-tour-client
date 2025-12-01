@@ -1,135 +1,26 @@
-"use client";
-import Link from "next/link";
-import {
-  FaBars,
-  FaBuilding,
-  FaCaretDown,
-  FaEnvelope,
-  FaPhone,
-} from "react-icons/fa6";
+import { FaBars } from "react-icons/fa6";
 import { Logo } from "../common/Logo";
-import { useWebsiteInfo } from "@/hooks/home/useWebsiteInfo";
-import { Swing } from "../loading/Swing";
-import { useCategoryList } from "@/hooks/home/useCategoryList";
 import { MiniCart } from "./MiniCart";
+import { TopHeader } from "./TopHeader";
+import { getCategoryTree } from "@/services/home";
+import { WebsiteInfo } from "@/types/home";
+import { HeaderMenu } from "./HeaderMenu";
 
-export const Header = () => {
-  const { websiteInfo, isPending } = useWebsiteInfo();
-  const { categoryList } = useCategoryList();
-
-  if (isPending) return <Swing />;
+export const Header = async ({ websiteInfo }: { websiteInfo: WebsiteInfo }) => {
+  const { categoryTree } = await getCategoryTree();
 
   return (
     <>
-      {/* Top Header */}
-      <div className="bg-travel-primary hidden py-3 text-[#FFFBEB] md:block">
-        <div className="container">
-          <div className="flex items-center justify-end gap-10">
-            {websiteInfo.phone && (
-              <div className="flex items-center gap-2">
-                <FaPhone className="text-xl" />
-                <span className="text-sm font-normal">{websiteInfo.phone}</span>
-              </div>
-            )}
-            {websiteInfo.email && (
-              <div className="flex items-center gap-2">
-                <FaEnvelope className="text-xl" />
-                <span className="text-sm font-normal">{websiteInfo.email}</span>
-              </div>
-            )}
-            {websiteInfo.address && (
-              <div className="flex items-center gap-2">
-                <FaBuilding className="text-xl" />
-                <span className="text-sm font-normal">
-                  {websiteInfo.address}
-                </span>
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
+      <TopHeader websiteInfo={websiteInfo} />
 
-      {/* Header */}
       <header className="sticky top-0 right-0 left-0 z-[900] bg-white py-3 shadow-md">
         <div className="container">
           <div className="flex items-center justify-between">
-            {/* Button Mobile */}
             <button className="block cursor-pointer lg:hidden">
-              <FaBars className="text-travel-secondary text-2xl" />
+              <FaBars className="text-travel-secondary text-[22px]" />
             </button>
-
-            {/* Logo */}
-            <Logo
-              websiteName={websiteInfo.websiteName}
-              logo={websiteInfo.logo}
-            />
-
-            {/* Menu */}
-            {categoryList && categoryList.length > 0 && (
-              <>
-                <nav className="hidden lg:block">
-                  <ul className="flex gap-6 xl:gap-10">
-                    <li>
-                      <Link
-                        href="/"
-                        className="text-travel-secondary text-[16px] font-medium capitalize"
-                      >
-                        Trang Chủ
-                      </Link>
-                    </li>
-                    {categoryList.map((cate) => (
-                      <li
-                        key={cate.id}
-                        className="group/sub-1 relative flex items-center gap-1.5"
-                      >
-                        <Link
-                          href={`/category/${cate.slug}`}
-                          className="text-travel-secondary text-[16px] font-medium capitalize"
-                        >
-                          {cate.name}
-                        </Link>
-                        {cate.children && cate.children.length > 0 && (
-                          <>
-                            <FaCaretDown className="text-sm" />
-                            <ul className="invisible absolute top-full left-0 w-[280px] translate-y-2 rounded-br-lg rounded-bl-lg bg-white py-2 opacity-0 shadow-md transition-all duration-300 group-hover/sub-1:visible group-hover/sub-1:translate-y-0 group-hover/sub-1:opacity-100">
-                              {cate.children.map((cate2) => (
-                                <li key={cate2.id}>
-                                  <Link
-                                    href={`/category/${cate2.slug}`}
-                                    className="text-travel-primary hover:bg-travel-primary block px-[22px] py-2 text-[16px] font-normal capitalize transition-all duration-300 hover:text-white"
-                                  >
-                                    {cate2.name}
-                                  </Link>
-                                </li>
-                              ))}
-                            </ul>
-                          </>
-                        )}
-                      </li>
-                    ))}
-
-                    <li>
-                      <Link
-                        href=""
-                        className="text-travel-secondary text-[16px] font-medium capitalize"
-                      >
-                        Tin Tức
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href=""
-                        className="text-travel-secondary text-[16px] font-medium capitalize"
-                      >
-                        Liên Hệ
-                      </Link>
-                    </li>
-                  </ul>
-                </nav>
-              </>
-            )}
-
-            {/* Cart */}
+            <Logo websiteInfo={websiteInfo} />
+            <HeaderMenu categoryTree={categoryTree} />
             <MiniCart />
           </div>
         </div>
