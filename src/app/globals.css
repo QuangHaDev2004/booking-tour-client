@@ -149,3 +149,49 @@ input[type="number"]::-webkit-outer-spin-button {
   padding-left: 30px;
   margin-bottom: 0;
 }
+
+/* React Datepicker */
+.react-datepicker {
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.24);
+  border: 0 !important;
+  animation: growDown 0.3s ease-in-out forwards;
+  transform-origin: top center;
+  background-color: white;
+}
+
+.react-datepicker__triangle {
+  display: none !important;
+}
+
+.react-datepicker__header {
+  border: none !important;
+}
+
+.react-datepicker__day-name:last-child,
+.react-datepicker__day--weekend:last-child {
+  color: red !important;
+}
+
+.react-datepicker__day--selected:last-child {
+  color: white !important;
+}
+
+.react-datepicker__day--selected {
+  background-color: var(--color-travel-primary) !important;
+}
+
+.react-datepicker-popper {
+  z-index: 2 !important;
+}
+
+@keyframes growDown {
+  0% {
+    transform: scaleY(0);
+  }
+  80% {
+    transform: scaleY(1.1);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}

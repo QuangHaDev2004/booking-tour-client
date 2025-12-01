@@ -1,4 +1,5 @@
 "use client";
+import { DatePickerCalendar } from "@/components/ui/DatePickerCalendar";
 import { filterPrice } from "@/constants/filter";
 import { useCityList } from "@/hooks/useCityList";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -163,14 +164,21 @@ export const Filter = ({
             >
               Ngày khởi hành
             </label>
-            <input
+            {/* <input
               value={filters.departureDate}
               onChange={(e) =>
                 handleUpdateFilter("departureDate", e.target.value)
               }
               type="date"
               className="border-travel-secondary/20 text-travel-secondary h-10 w-full rounded-sm border px-3 text-sm"
-            ></input>
+            ></input> */}
+            <DatePickerCalendar
+              value={filters.departureDate}
+              onChange={(value: string) =>
+                handleUpdateFilter("departureDate", value)
+              }
+              className="border-travel-secondary/20 placeholder:text-travel-secondary h-10 w-full rounded-sm border px-3 text-sm font-medium"
+            />
           </div>
 
           <button
