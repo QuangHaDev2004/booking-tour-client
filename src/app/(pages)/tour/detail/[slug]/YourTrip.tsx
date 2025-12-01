@@ -53,6 +53,8 @@ export const YourTrip = ({ tourDetail }: { tourDetail: TourDetail }) => {
     toast.success("Đã thêm tour vào giỏ hàng!");
   };
 
+  console.log(tourDetail);
+
   return (
     <div className="sticky top-24 right-0 rounded-lg bg-white p-4 shadow-md sm:p-6">
       <h2 className="text-travel-primary mb-4 text-[20px] font-bold">
@@ -133,101 +135,109 @@ export const YourTrip = ({ tourDetail }: { tourDetail: TourDetail }) => {
             </div>
           </div>
 
-          <div className="mb-4">
-            <label
-              htmlFor=""
-              className="text-travel-gray-900 mb-2 block text-sm"
-            >
-              Số lượng hành khách:
-            </label>
-            <div className="flex flex-col gap-2">
-              <div className="flex items-center justify-between">
+          {tourDetail.stockAdult > 0 ? (
+            <>
+              <div className="mb-4">
                 <label
-                  htmlFor="Adult"
-                  className="text-travel-gray-900 mb-1 inline-block w-20 text-sm sm:w-[100px]"
+                  htmlFor=""
+                  className="text-travel-gray-900 mb-2 block text-sm"
                 >
-                  Người lớn:
+                  Số lượng hành khách:
                 </label>
-                <CounterInput
-                  min={1}
-                  max={tourDetail.stockAdult}
-                  value={inputAdult}
-                  setQuantity={setQuantityAdult}
-                  setInput={setInputAdult}
-                />
-                <div className="text-travel-gray-900 flex-1 text-right">
-                  <span className="text-travel-primary text-sm font-semibold sm:text-[16px]">
-                    {tourDetail.priceNewAdult.toLocaleString("vi-VN")}
-                    <span className="underline">đ</span>
-                  </span>
-                  <span className="text-xs font-medium"> / Khách</span>
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center justify-between">
+                    <label
+                      htmlFor="Adult"
+                      className="text-travel-gray-900 mb-1 inline-block w-20 text-sm sm:w-[100px]"
+                    >
+                      Người lớn:
+                    </label>
+                    <CounterInput
+                      min={1}
+                      max={tourDetail.stockAdult}
+                      value={inputAdult}
+                      setQuantity={setQuantityAdult}
+                      setInput={setInputAdult}
+                    />
+                    <div className="text-travel-gray-900 flex-1 text-right">
+                      <span className="text-travel-primary text-sm font-semibold sm:text-[16px]">
+                        {tourDetail.priceNewAdult.toLocaleString("vi-VN")}
+                        <span className="underline">đ</span>
+                      </span>
+                      <span className="text-xs font-medium"> / Khách</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <label
+                      htmlFor="Children"
+                      className="text-travel-gray-900 mb-1 inline-block w-20 text-sm sm:w-[100px]"
+                    >
+                      Trẻ em:
+                    </label>
+                    <CounterInput
+                      min={0}
+                      max={tourDetail.stockChildren}
+                      value={inputChildren}
+                      setQuantity={setQuantityChildren}
+                      setInput={setInputChildren}
+                    />
+                    <div className="text-travel-gray-900 flex-1 text-right">
+                      <span className="text-travel-primary text-sm font-semibold sm:text-[16px]">
+                        {tourDetail.priceNewChildren.toLocaleString("vi-VN")}
+                        <span className="underline">đ</span>
+                      </span>
+                      <span className="text-xs font-medium"> / Khách</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <label
+                      htmlFor="Baby"
+                      className="text-travel-gray-900 mb-1 inline-block w-20 text-sm sm:w-[100px]"
+                    >
+                      Em bé:
+                    </label>
+                    <CounterInput
+                      min={0}
+                      max={tourDetail.stockBaby}
+                      value={inputBaby}
+                      setQuantity={setQuantityBaby}
+                      setInput={setInputBaby}
+                    />
+                    <div className="text-travel-gray-900 flex-1 text-right">
+                      <span className="text-travel-primary text-sm font-semibold sm:text-[16px]">
+                        {tourDetail.priceNewBaby.toLocaleString("vi-VN")}
+                        <span className="underline">đ</span>
+                      </span>
+                      <span className="text-xs font-medium"> / Khách</span>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div className="flex items-center justify-between">
-                <label
-                  htmlFor="Children"
-                  className="text-travel-gray-900 mb-1 inline-block w-20 text-sm sm:w-[100px]"
-                >
-                  Trẻ em:
-                </label>
-                <CounterInput
-                  min={0}
-                  max={tourDetail.stockChildren}
-                  value={inputChildren}
-                  setQuantity={setQuantityChildren}
-                  setInput={setInputChildren}
-                />
-                <div className="text-travel-gray-900 flex-1 text-right">
-                  <span className="text-travel-primary text-sm font-semibold sm:text-[16px]">
-                    {tourDetail.priceNewChildren.toLocaleString("vi-VN")}
-                    <span className="underline">đ</span>
-                  </span>
-                  <span className="text-xs font-medium"> / Khách</span>
-                </div>
-              </div>
-              <div className="flex items-center justify-between">
-                <label
-                  htmlFor="Baby"
-                  className="text-travel-gray-900 mb-1 inline-block w-20 text-sm sm:w-[100px]"
-                >
-                  Em bé:
-                </label>
-                <CounterInput
-                  min={0}
-                  max={tourDetail.stockBaby}
-                  value={inputBaby}
-                  setQuantity={setQuantityBaby}
-                  setInput={setInputBaby}
-                />
-                <div className="text-travel-gray-900 flex-1 text-right">
-                  <span className="text-travel-primary text-sm font-semibold sm:text-[16px]">
-                    {tourDetail.priceNewBaby.toLocaleString("vi-VN")}
-                    <span className="underline">đ</span>
-                  </span>
-                  <span className="text-xs font-medium"> / Khách</span>
-                </div>
-              </div>
-            </div>
-          </div>
 
-          <div className="mb-4 flex items-center justify-between">
-            <label
-              htmlFor="Total Price"
-              className="text-travel-secondary text-[16px] font-normal"
-            >
-              Tổng tiền:
-            </label>
-            <div className="text-travel-primary text-[20px] font-semibold">
-              {totalPrice.toLocaleString("vi-VN")}đ
-            </div>
-          </div>
+              <div className="mb-4 flex items-center justify-between">
+                <label
+                  htmlFor="Total Price"
+                  className="text-travel-secondary text-[16px] font-normal"
+                >
+                  Tổng tiền:
+                </label>
+                <div className="text-travel-primary text-[20px] font-semibold">
+                  {totalPrice.toLocaleString("vi-VN")}đ
+                </div>
+              </div>
 
-          <button
-            onClick={handleAddToCart}
-            className="bg-travel-primary border-travel-primary text hover:text-travel-primary h-11 w-full cursor-pointer rounded-lg border text-[16px] font-semibold text-white transition-all duration-300 hover:bg-transparent"
-          >
-            Thêm Vào Giỏ Hàng
-          </button>
+              <button
+                onClick={handleAddToCart}
+                className="bg-travel-primary border-travel-primary text hover:text-travel-primary h-11 w-full cursor-pointer rounded-lg border text-[16px] font-semibold text-white transition-all duration-300 hover:bg-transparent"
+              >
+                Thêm Vào Giỏ Hàng
+              </button>
+            </>
+          ) : (
+            <div className="rounded-md bg-amber-100 px-4 py-2 text-sm font-medium text-red-900">
+              Số chỗ của tour Quý khách tham khảo hiện tại đang hết.
+            </div>
+          )}
         </>
       ) : (
         <div className="">Chưa có thông tin cho tour này</div>

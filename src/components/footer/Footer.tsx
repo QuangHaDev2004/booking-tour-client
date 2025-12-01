@@ -2,12 +2,10 @@
 import Link from "next/link";
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa6";
 import { Logo } from "../common/Logo";
-import { useWebsiteInfo } from "@/hooks/home/useWebsiteInfo";
 import { FormSendEmail } from "./FormSendEmail";
+import { WebsiteInfo } from "@/types/home";
 
-export const Footer = () => {
-  const { websiteInfo } = useWebsiteInfo();
-
+export const Footer = ({ websiteInfo }: { websiteInfo: WebsiteInfo }) => {
   return (
     <div className="rounded-tl-[25px] rounded-tr-[25px] bg-[#ECECEC] pt-10 pb-10 sm:rounded-tl-[40px] sm:rounded-tr-[40px] sm:pt-[60px]">
       <div className="container">
@@ -94,10 +92,7 @@ export const Footer = () => {
               © 2025 36Travel. All rights reserved.
             </div>
             <div className="w-full lg:w-[224px]">
-              <Logo
-                websiteName={websiteInfo.websiteName}
-                logo={websiteInfo.logo}
-              />
+              <Logo websiteInfo={websiteInfo} />
             </div>
             <div className="flex w-full items-center justify-center gap-[25px] text-[13px] font-medium text-[#667479] sm:gap-[30px] lg:w-[calc(50%-112px)] lg:justify-end">
               <Link

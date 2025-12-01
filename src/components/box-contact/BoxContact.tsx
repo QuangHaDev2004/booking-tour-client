@@ -1,11 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 import { useWebsiteInfo } from "@/hooks/home/useWebsiteInfo";
+import { WebsiteInfo } from "@/types/home";
 import Link from "next/link";
 import { FaPhoneVolume } from "react-icons/fa6";
 
-export const BoxContact = () => {
-  const { websiteInfo } = useWebsiteInfo();
+export const BoxContact = ({ websiteInfo }: { websiteInfo: WebsiteInfo }) => {
+  if (!websiteInfo) return null;
+  // const { websiteInfo } = useWebsiteInfo();
   return (
     <div className="fab fixed right-4 bottom-24 z-[998]">
       <div
