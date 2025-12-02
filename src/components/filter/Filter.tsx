@@ -1,57 +1,21 @@
 "use client";
-import { filterPrice } from "@/constants/filter";
-import { useCityList } from "@/hooks/useCityList";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { CityItem } from "@/types/city";
 import { FiFilter } from "react-icons/fi";
+import { filterPrice } from "@/constants/filter";
+import { useTourFilter } from "@/hooks/useTourFilter";
+import { DatePickerCalendar } from "../ui/DatePickerCalendar";
 
 export const Filter = ({
+  cityList,
   filterActive,
   setFilterActive,
 }: {
+  cityList: CityItem[];
   filterActive: boolean;
   setFilterActive: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
-  const { cityList } = useCityList();
-  const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-
-  const initialFilters = {
-    price: searchParams.get("price") || "",
-    locationFrom: searchParams.get("locationFrom") || "",
-    locationTo: searchParams.get("locationTo") || "",
-    departureDate: searchParams.get("departureDate") || "",
-  };
-
-  const [filters, setFilters] = useState(initialFilters);
-
-  const handleUpdateFilter = (key: string, value: string) => {
-    setFilters((prev) => ({
-      ...prev,
-      [key]: value,
-    }));
-  };
-
-  const handleApplyFilter = () => {
-    const params = new URLSearchParams();
-    Object.entries(filters).forEach(([key, value]) => {
-      if (value) params.set(key, value);
-    });
-
-    router.push(`/search?${params.toString()}`, { scroll: false });
-  };
-
-  const handleResetFilter = () => {
-    setFilters({
-      price: "",
-      locationFrom: "",
-      locationTo: "",
-      departureDate: "",
-    });
-
-    router.push(pathname, { scroll: false });
-  };
+  const { filters, handleApplyFilter, handleResetFilter, handleUpdateFilter } =
+    useTourFilter();
 
   return (
     <>
@@ -80,16 +44,19 @@ export const Filter = ({
             <select
               value={filters.price}
               onChange={(e) => handleUpdateFilter("price", e.target.value)}
-              className="select border-travel-secondary/20 text-travel-secondary w-full rounded-sm border bg-white px-3 text-sm font-medium"
+              className="select border-travel-secondary/20 text-travel-secondary w-full rounded-md border bg-white px-3 text-sm font-medium"
             >
-              <option value="" className="rounded-sm py-2">
+              <option
+                value=""
+                className="hover:bg-travel-primary rounded-sm bg-white py-2 hover:text-white"
+              >
                 Tất cả
               </option>
               {filterPrice.map((price) => (
                 <option
                   key={price.id}
                   value={price.value}
-                  className="rounded-sm py-2"
+                  className="hover:bg-travel-primary rounded-sm bg-white py-2 hover:text-white"
                 >
                   {price.label}
                 </option>
@@ -111,14 +78,16 @@ export const Filter = ({
                   onChange={(e) =>
                     handleUpdateFilter("locationFrom", e.target.value)
                   }
-                  className="select border-travel-secondary/20 text-travel-secondary w-full rounded-sm border bg-white px-3 text-sm font-medium"
+                  className="select border-travel-secondary/20 text-travel-secondary w-full rounded-md border bg-white px-3 text-sm font-medium"
                 >
-                  <option className="rounded-sm py-2">Tất cả</option>
+                  <option className="hover:bg-travel-primary rounded-sm bg-white py-2 hover:text-white">
+                    Tất cả
+                  </option>
                   {cityList.map((city) => (
                     <option
                       key={city.id}
                       value={city.id}
-                      className="rounded-sm py-2"
+                      className="hover:bg-travel-primary rounded-sm bg-white py-2 hover:text-white"
                     >
                       {city.name}
                     </option>
@@ -138,14 +107,16 @@ export const Filter = ({
                   onChange={(e) =>
                     handleUpdateFilter("locationTo", e.target.value)
                   }
-                  className="select border-travel-secondary/20 text-travel-secondary rounded-sm border bg-white px-3 text-sm font-medium"
+                  className="select border-travel-secondary/20 text-travel-secondary rounded-md border bg-white px-3 text-sm font-medium"
                 >
-                  <option className="rounded-sm py-2">Tất cả</option>
+                  <option className="hover:bg-travel-primary rounded-sm bg-white py-2 hover:text-white">
+                    Tất cả
+                  </option>
                   {cityList.map((city) => (
                     <option
                       key={city.id}
                       value={city.id}
-                      className="rounded-sm py-2"
+                      className="hover:bg-travel-primary rounded-sm bg-white py-2 hover:text-white"
                     >
                       {city.name}
                     </option>
@@ -162,25 +133,24 @@ export const Filter = ({
             >
               Ngày khởi hành
             </label>
-            <input
+            <DatePickerCalendar
               value={filters.departureDate}
-              onChange={(e) =>
-                handleUpdateFilter("departureDate", e.target.value)
+              onChange={(value: string) =>
+                handleUpdateFilter("departureDate", value)
               }
-              type="date"
-              className="border-travel-secondary/20 text-travel-secondary h-10 w-full rounded-sm border px-3 text-sm"
-            ></input>
+              className="border-travel-secondary/20 placeholder:text-travel-secondary h-10 w-full rounded-md border px-3 text-sm font-medium"
+            />
           </div>
 
           <button
             onClick={handleApplyFilter}
-            className="border-travel-primary text-travel-primary hover:bg-travel-primary/10 h-10 cursor-pointer rounded-sm border bg-white text-sm font-medium"
+            className="border-travel-primary text-travel-primary hover:bg-travel-primary/10 h-10 cursor-pointer rounded-md border bg-white text-sm font-medium"
           >
             Áp Dụng
           </button>
           <button
             onClick={handleResetFilter}
-            className="border-travel-red text-travel-red hover:bg-travel-red/10 h-10 cursor-pointer rounded-sm border bg-white text-sm font-medium"
+            className="border-travel-red text-travel-red hover:bg-travel-red/10 h-10 cursor-pointer rounded-md border bg-white text-sm font-medium"
           >
             Xóa bộ lọc
           </button>
