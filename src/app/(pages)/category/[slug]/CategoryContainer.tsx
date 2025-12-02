@@ -1,9 +1,11 @@
 "use client";
 import { useState } from "react";
-import { TourList } from "./TourList";
+import { TourItem } from "@/types/tour";
 import { CityItem } from "@/types/city";
 import { CategoryDetail } from "@/types/category";
 import { Filter } from "@/components/filter/Filter";
+import { TourResult } from "@/components/tour/TourResult";
+import { useCategoryTourList } from "@/hooks/useTourList";
 
 export const CategoryContainer = ({
   slug,
@@ -15,6 +17,8 @@ export const CategoryContainer = ({
   categoryDetail: CategoryDetail;
 }) => {
   const [filterActive, setFilterActive] = useState(false);
+  const { data, isLoading } = useCategoryTourList({ slug });
+  const tourList: TourItem[] = data?.tourList ?? [];
 
   return (
     <>
@@ -38,7 +42,11 @@ export const CategoryContainer = ({
                 }}
               ></div>
 
-              <TourList setFilterActive={setFilterActive} slug={slug} />
+              <TourResult
+                tourList={tourList}
+                isLoading={isLoading}
+                setFilterActive={setFilterActive}
+              />
             </div>
           </div>
         </div>

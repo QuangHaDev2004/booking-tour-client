@@ -1,7 +1,6 @@
-import { getSearchResults } from "@/services/search";
-import { TourItem } from "@/types/tour";
-import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "next/navigation";
+import { getSearchResults } from "@/services/search";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
 
 export const useSearch = () => {
   const searchParams = useSearchParams();
@@ -11,16 +10,10 @@ export const useSearch = () => {
     if (value) params[key] = value;
   });
 
-  const { data, isPending, isError } = useQuery({
+  return useQuery({
     queryKey: ["search", params],
     queryFn: () => getSearchResults(params),
+    enabled: !!params,
+    placeholderData: keepPreviousData,
   });
-
-  const tourList: TourItem[] = data?.tourList ?? [];
-
-  return {
-    tourList,
-    isPending,
-    isError,
-  };
 };

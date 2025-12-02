@@ -1,13 +1,19 @@
 "use client";
 import { useState } from "react";
-import { Filter } from "./Filter";
-import { TourList } from "./TourList";
+import { TourItem } from "@/types/tour";
+import { CityItem } from "@/types/city";
 import { useSearchParams } from "next/navigation";
+import { Filter } from "@/components/filter/Filter";
+import { useSearch } from "@/hooks/search/useSearch";
+import { TourResult } from "@/components/tour/TourResult";
 
-export const SearchContainer = () => {
-  const [filterActive, setFilterActive] = useState(false);
+export const SearchContainer = ({ cityList }: { cityList: CityItem[] }) => {
   const searchParams = useSearchParams();
   const keyword = searchParams.get("keyword") || "";
+  const [filterActive, setFilterActive] = useState(false);
+
+  const { data, isLoading } = useSearch();
+  const tourList: TourItem[] = data?.tourList ?? [];
 
   return (
     <>
@@ -15,6 +21,7 @@ export const SearchContainer = () => {
         <div className="container">
           <div className="flex gap-[23px]">
             <Filter
+              cityList={cityList}
               filterActive={filterActive}
               setFilterActive={setFilterActive}
             />
@@ -29,7 +36,11 @@ export const SearchContainer = () => {
                 )}
               </h2>
 
-              <TourList setFilterActive={setFilterActive} />
+              <TourResult
+                tourList={tourList}
+                isLoading={isLoading}
+                setFilterActive={setFilterActive}
+              />
             </div>
           </div>
         </div>

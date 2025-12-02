@@ -5,11 +5,9 @@ import { useCartStore } from "@/store/useCartStore";
 import { TourDetail } from "@/types/tour";
 import { useEffect, useState } from "react";
 import { FaRegCalendarAlt } from "react-icons/fa";
-import { FaCar } from "react-icons/fa6";
 import { GrMapLocation } from "react-icons/gr";
 import { HiOutlineUserGroup } from "react-icons/hi";
-import { IoTicketOutline } from "react-icons/io5";
-import { LuAlarmClock } from "react-icons/lu";
+import { LuAlarmClock, LuPlane, LuTicket } from "react-icons/lu";
 import { toast } from "sonner";
 
 export const YourTrip = ({ tourDetail }: { tourDetail: TourDetail }) => {
@@ -79,7 +77,7 @@ export const YourTrip = ({ tourDetail }: { tourDetail: TourDetail }) => {
           <div className="text-travel-gray-900 mb-4 flex flex-col gap-2 text-sm">
             <div className="flex items-center gap-2">
               <div className="flex items-center gap-1">
-                <IoTicketOutline size={20} />
+                <LuTicket size={20} />
                 Mã Tour:
               </div>
               <div className="text-travel-primary font-semibold">
@@ -117,7 +115,7 @@ export const YourTrip = ({ tourDetail }: { tourDetail: TourDetail }) => {
             </div>
             <div className="flex items-center gap-2">
               <div className="flex items-center gap-1">
-                <FaCar size={20} />
+                <LuPlane size={20} />
                 Phương tiện:
               </div>
               <div className="text-travel-primary font-semibold">
