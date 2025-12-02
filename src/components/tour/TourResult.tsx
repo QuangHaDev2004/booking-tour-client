@@ -3,21 +3,19 @@ import { TourItem } from "@/types/tour";
 import { FiFilter } from "react-icons/fi";
 import { sortList } from "@/constants/sort";
 import { TourCard } from "@/components/tour/TourCart";
-import { useCategoryTourList } from "@/hooks/useTourList";
 import { EmptyState } from "@/components/common/EmptyState";
 import { Pagination } from "@/components/pagination/pagination";
 import { TourCardSkeleton } from "@/components/skeleton/TourCardSkeleton";
 
-export const TourList = ({
+export const TourResult = ({
+  tourList,
+  isLoading,
   setFilterActive,
-  slug,
 }: {
+  tourList: TourItem[];
+  isLoading: boolean;
   setFilterActive: React.Dispatch<React.SetStateAction<boolean>>;
-  slug: string;
 }) => {
-  const { data, isLoading } = useCategoryTourList({ slug });
-  const tourList: TourItem[] = data?.tourList ?? [];
-
   return (
     <>
       <div className="mb-4 flex flex-wrap items-center justify-between gap-2.5 sm:mb-[30px] sm:gap-4">
