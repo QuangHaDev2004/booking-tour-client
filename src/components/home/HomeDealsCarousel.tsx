@@ -7,6 +7,16 @@ import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
 import { Title } from "../title/Title";
 import { useClientReady } from "@/hooks/useClientReady";
+import { Spinner } from "../loading/Spinner";
+
+const images = [
+  "/assets/images/deal-carousel-1.jpg",
+  "/assets/images/deal-carousel-2.jpg",
+  "/assets/images/deal-carousel-3.jpg",
+  "/assets/images/deal-carousel-4.jpg",
+  "/assets/images/deal-carousel-5.jpg",
+  "/assets/images/deal-carousel-6.jpg",
+];
 
 export const HomeDealsCarousel = () => {
   const { isReady } = useClientReady();
@@ -28,22 +38,22 @@ export const HomeDealsCarousel = () => {
             }}
             className="swiperSection3"
           >
-            {Array(6)
-              .fill("")
-              .map((_, index) => (
-                <SwiperSlide key={index}>
-                  <div className="aspect-[382/269] overflow-hidden rounded-lg">
-                    <img
-                      src="/assets/images/section-3-1.jpg"
-                      alt=""
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
-                </SwiperSlide>
-              ))}
+            {images.map((item, index) => (
+              <SwiperSlide key={index}>
+                <div className="aspect-[382/269] overflow-hidden rounded-lg">
+                  <img
+                    src={item}
+                    alt={item}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+              </SwiperSlide>
+            ))}
           </Swiper>
         ) : (
-          <div className="h-[269px]"></div>
+          <div className="h-[316px]">
+            <Spinner />
+          </div>
         )}
       </div>
     </div>

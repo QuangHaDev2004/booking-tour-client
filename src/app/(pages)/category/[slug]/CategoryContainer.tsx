@@ -1,15 +1,18 @@
 "use client";
 import { useState } from "react";
-import { Filter } from "./Filter";
 import { TourList } from "./TourList";
+import { CityItem } from "@/types/city";
 import { CategoryDetail } from "@/types/category";
+import { Filter } from "@/components/filter/Filter";
 
 export const CategoryContainer = ({
-  categoryDetail,
   slug,
+  cityList,
+  categoryDetail,
 }: {
-  categoryDetail: CategoryDetail;
   slug: string;
+  cityList: CityItem[];
+  categoryDetail: CategoryDetail;
 }) => {
   const [filterActive, setFilterActive] = useState(false);
 
@@ -19,6 +22,7 @@ export const CategoryContainer = ({
         <div className="container">
           <div className="flex gap-[23px]">
             <Filter
+              cityList={cityList}
               filterActive={filterActive}
               setFilterActive={setFilterActive}
             />

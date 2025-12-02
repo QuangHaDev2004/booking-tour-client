@@ -1,6 +1,7 @@
-import { api } from "@/libs/axios";
+import { API_URL } from "@/config/api";
+import { handleResponse } from "@/libs/api";
 
 export const getCityList = async () => {
-  const res = await api.get("/city/list");
-  return res.data;
+  const res = await fetch(`${API_URL}/city/list`);
+  return handleResponse(res);
 };

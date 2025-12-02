@@ -1,6 +1,7 @@
-import { BreadCrumb } from "@/components/breadcrumb/BreadCrumb";
+import { getCityList } from "@/services/city";
 import { CategoryContainer } from "./CategoryContainer";
-import { getCategoryDetail } from "@/services/category";
+import { getCategoryTourList } from "@/services/category";
+import { BreadCrumb } from "@/components/breadcrumb/BreadCrumb";
 
 export default async function CategoryDetailPage({
   params,
@@ -8,13 +9,17 @@ export default async function CategoryDetailPage({
   params: { slug: string };
 }) {
   const { slug } = await params;
-  const { breadcrumb, categoryDetail } =
-    await getCategoryDetail(slug);
+  const { cityList } = await getCityList();
+  const { breadcrumb, categoryDetail } = await getCategoryTourList(slug);
 
   return (
     <>
       <BreadCrumb breadcrumb={breadcrumb} />
-      <CategoryContainer categoryDetail={categoryDetail} slug={slug} />
+      <CategoryContainer
+        slug={slug}
+        cityList={cityList}
+        categoryDetail={categoryDetail}
+      />
     </>
   );
 }

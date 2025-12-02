@@ -1,7 +1,7 @@
-export const getCategoryDetail = async (slug: string) => {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/category/${slug}`,
-  );
-  const data = await res.json();
-  return data;
+import { API_URL } from "@/config/api";
+import { handleResponse } from "@/libs/api";
+
+export const getCategoryTourList = async (slug: string) => {
+  const res = await fetch(`${API_URL}/category/${slug}`);
+  return handleResponse(res);
 };
