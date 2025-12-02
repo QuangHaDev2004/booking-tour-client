@@ -7,6 +7,7 @@ export type CartItem = {
 };
 
 export type CartStore = {
+  hasHydrated: boolean;
   cart: CartItem[];
 
   addToCart: (tour: CartItem) => void;

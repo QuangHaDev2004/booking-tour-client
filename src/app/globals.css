@@ -121,6 +121,7 @@ input[type="number"]::-webkit-outer-spin-button {
 /* Tinymce Content */
 .tinymce-content {
   text-align: justify;
+  color: var(--color-travel-secondary);
 }
 
 .tinymce-content h5 {

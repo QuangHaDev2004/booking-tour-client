@@ -9,16 +9,18 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/thumbs";
 import { TourDetail } from "@/types/tour";
+import { Spinner } from "@/components/loading/Spinner";
 
 export const BoxImages = ({ tourDetail }: { tourDetail: TourDetail }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
   const { isReady } = useClientReady();
+  // const isReady= false
 
   return (
     <>
       {tourDetail?.images && tourDetail?.images.length > 0 && (
         <>
-          <div className="mb-[30px]">
+          <div>
             <div className="mb-2 sm:mb-4">
               {/* Image Main */}
               <Swiper
@@ -69,14 +71,16 @@ export const BoxImages = ({ tourDetail }: { tourDetail: TourDetail }) => {
                       <div className="aspect-[695/480] overflow-hidden rounded-[10px]">
                         <img
                           src={image}
-                          alt=""
+                          alt={image}
                           className="h-full w-full cursor-pointer object-cover"
                         />
                       </div>
                     </SwiperSlide>
                   ))
                 ) : (
-                  <div className="h-[129px]"></div>
+                  <div className="h-[114px]">
+                    <Spinner />
+                  </div>
                 )}
               </Swiper>
             </div>

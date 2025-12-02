@@ -1,10 +1,11 @@
 import { CartStore } from "@/types/store";
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { createJSONStorage, persist } from "zustand/middleware";
 
 export const useCartStore = create<CartStore>()(
   persist(
     (set) => ({
+      hasHydrated: false,
       cart: [],
 
       addToCart: (tour) =>
@@ -53,6 +54,14 @@ export const useCartStore = create<CartStore>()(
           ),
         })),
     }),
-    { name: "travel-cart" },
+    {
+      name: "travel-cart",
+      storage: createJSONStorage(() => localStorage),
+      onRehydrateStorage: () => (state) => {
+        if (state) {
+          state.hasHydrated = true;
+        }
+      },
+    },
   ),
 );
