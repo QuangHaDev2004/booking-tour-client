@@ -13,7 +13,13 @@ export const LastMinuteDealFeatures = ({
 }) => {
   const { isReady } = useClientReady();
 
-  if (!isReady) return <div className="h-[435px]"></div>;
+  if (!isReady)
+    return (
+      <div className="flex h-[435px] flex-1 flex-col items-center justify-center">
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-gray-200 border-t-gray-400"></div>
+        <div className="mt-2 font-medium text-white">Đang tải...</div>
+      </div>
+    );
 
   return (
     <div className="w-full md:w-1/2 lg:w-[68%] xl:w-3/4">

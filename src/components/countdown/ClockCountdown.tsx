@@ -8,10 +8,17 @@ export const ClockCountdown = ({ expireDate }: { expireDate: string }) => {
   if (!isReady)
     return (
       <div className="mb-[47px] flex justify-center gap-4 text-center">
-        <div className="text-primary h-14 w-14 rounded-lg bg-white"></div>
-        <div className="text-primary h-14 w-14 rounded-lg bg-white"></div>
-        <div className="text-primary h-14 w-14 rounded-lg bg-white"></div>
-        <div className="text-primary h-14 w-14 rounded-lg bg-white"></div>
+        {Array(4)
+          .fill("")
+          .map((_, index) => (
+            <div
+              key={index}
+              className="text-primary h-14 w-14 rounded-lg bg-white"
+            >
+              <div className="mx-auto mt-2 h-6 w-8 animate-pulse rounded-sm bg-gray-300"></div>
+              <div className="mx-auto mt-1 h-4 w-8 animate-pulse rounded-sm bg-gray-300"></div>
+            </div>
+          ))}
       </div>
     );
 
@@ -24,6 +31,7 @@ export const ClockCountdown = ({ expireDate }: { expireDate: string }) => {
           <div className="mb-[47px] flex justify-center gap-4 text-center">
             <div className="text-primary h-14 w-14 rounded-lg bg-white">
               <div className="text-3xl font-bold">
+                {/* độ dài chuỗi < 2 thì thêm 0 vào trước */}
                 {String(days).padStart(2, "0")}
               </div>
               <div className="text-xs font-medium">Ngày</div>
