@@ -6,9 +6,10 @@ import { CounterInput } from "@/components/common/CounterInput";
 import { useCartDetail } from "@/hooks/cart/useCartDetail";
 import { useCartStore } from "@/store/useCartStore";
 import { CartDetail } from "@/types/store";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { FaChevronRight, FaXmark } from "react-icons/fa6";
 import { EmptyCart } from "./EmptyCart";
+import { CartItemSkeleton } from "@/components/skeleton/CartItemSkeleton";
 
 export type QuantityState = {
   [tourId: string]: {
@@ -24,20 +25,11 @@ export type QuantityState = {
 export const CartContainer = () => {
   const { cart, updateCartItem, removeFromCart, checkCartItem } =
     useCartStore();
-  const [cartDetail, setCartDetail] = useState<CartDetail[] | null>([]);
+  const { data, isLoading } = useCartDetail({ cart });
+  const cartDetail: CartDetail[] = useMemo(() => data?.cart ?? [], [data]);
   const [quantities, setQuantities] = useState<QuantityState>({});
-  const { mutate } = useCartDetail({ setCartDetail });
 
-  useEffect(() => {
-    if (cart.length > 0) {
-      mutate(cart);
-    } else {
-      setCartDetail([]);
-      setQuantities({});
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cart]);
-
+  // display default quantity
   useEffect(() => {
     if (cartDetail && cartDetail.length > 0) {
       const newQuantity: QuantityState = {};
@@ -86,7 +78,15 @@ export const CartContainer = () => {
             </Link>
           </div>
 
-          {cartDetail && cartDetail.length > 0 ? (
+          <div className="min-h-[300px]">
+
+          {isLoading ? (
+            Array(3)
+              .fill("")
+              .map((_, index) => <CartItemSkeleton key={index} />)
+          ) : !cartDetail || cartDetail.length === 0 ? (
+            <EmptyCart />
+          ) : (
             <>
               <div className="mb-4 flex flex-col gap-4">
                 {cartDetail.map((item) => (
@@ -345,9 +345,8 @@ export const CartContainer = () => {
                 </div>
               </div>
             </>
-          ) : (
-            <EmptyCart />
           )}
+          </div>
         </div>
 
         {cartDetail && cartDetail.length > 0 && <BookingForm />}
